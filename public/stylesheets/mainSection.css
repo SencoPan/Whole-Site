@@ -1,0 +1,12 @@
+#main_section_content{
+	min-height: 1024px;
+	height:auto;
+	background: #e5e5e5  /* url("http://ilyakhasanov.ru/images/background/46.png") */ repeat;
+	width: 100vw;
+	position: relative;
+	flex: auto;
+	padding-bottom: 1%;
+	padding-top: 1%;
+	min-height: 1024px;
+	height:auto;
+}

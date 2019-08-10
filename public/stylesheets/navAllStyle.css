@@ -1,0 +1,212 @@
+#colorChangemh{
+	background: #3367d5;
+}
+#main_navbar{
+	justify-content: unset !important;
+	background: #3367d5;
+	padding:0;
+}
+#check .col-1 a{
+	display: flex;
+	align-self: center;
+	justify-content: center;
+	margin: 0 auto;
+
+}
+#main_navbar .logoOfSite{
+	width: 4em;
+	height: 2.5em;
+	max-width: 100%;
+}
+#main_navbar .logoOfSite a{
+	margin: 0;
+}
+#main_navbar .col{
+	padding: 0;
+}
+#check1{
+	background: #3367d5;
+	padding: 0;
+}
+.check{
+	display: inline-flex;
+	justify-content: space-between;
+}
+#main_navbar div.customNav{
+	display: inline-flex;
+	align-items: center;
+}
+#main_navbar div.customNav a{
+	padding: 0 .2em 0 .2em;
+	display: inline-flex;
+	max-height: 100%;
+	min-height: 100%;
+	text-align: center;
+	align-items: center;
+	margin-right: 1em;
+	font-size: 1.3em;
+	font-family: Helvetica;
+	/* font-weight: 600; */
+	text-decoration: none;
+	text-transform: uppercase;
+	outline: none;
+
+}
+#main_navbar div.customNav a:hover{
+	background: -webkit-linear-gradient(#C9D6FF,  #E2E2E2);
+ 	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+#main_navbar div.customNav a:active{
+	background: -webkit-linear-gradient(grey,  #C9D6FF);
+ 	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+#main_navbar div.customNav a p{
+	display: inline;
+	color: #f5f4f5;
+}
+.nav.logs1{
+	display: inline-flex;
+	float: left;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: flex-end;
+	align-content: space-between;
+}
+div.logsForms{
+	display: flex;
+	flex-direction: column;
+	width: 15em;
+}
+div.nav.logs1 form.logs{
+	flex-direction: row;
+	display: flex;
+	width: 11em;
+}
+div.logsForms input{
+	display: flex;	
+	width: 100%;
+	height: 1.5em;
+	outline: none;
+	border:2px solid #451e3e;
+	border-radius: 2px;
+	align-content: center;
+	margin: auto;
+	background: #f8faff;
+	font-family: Fedra Sans;
+	font-weight: lighter;
+}
+div.logsButtons{
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.nav.logs1 button{
+	align-items: center;
+	background:#5159d0;
+	display: flex;
+	height: 1.4em;
+	justify-content: center;
+	text-align: center;
+	margin: auto;
+	margin-left: 0.2em;
+	margin-right: 0;
+	width: 3.6em;
+	border: 1px solid white;	
+	border-radius: 2px;
+}
+.nav.logs1 button:nth-child(1){
+	background: #f50;
+}
+.nav.logs1 button a:hover{
+	color: #d2c5c5;
+}
+.nav.logs1 button a{
+	text-decoration: none;
+	font-size: .9em;
+	white-space: nowrap;
+	color: white;
+}
+
+div.search.language{
+	display: inline-flex;
+	width: auto;
+	height: 100%;
+	margin-right: 0.2em;
+}
+
+div.search.language  form{
+	display: flex;
+	position: relative;
+	flex-direction: row;
+}
+div.search.language  form div{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+div.search.language  form div.icons-anm{
+}
+div.search.language  form div.input-anm{
+}
+div.search.language  form input{	
+	display: flex;
+	width: .39em;
+	height: 1.4em;
+}
+div.search.language  form div div:last-child{ 
+	padding: 0;
+	border:none;
+}
+div.search.language  form input#search-anm-1{
+	border-left: 5px outset #f50;
+	border-top: 2px inset #f50;
+	border-bottom: 2px inset #f50;
+	padding:0;
+	justify-content: flex-end;
+}
+div.search.language  form div div{	
+	display: flex;
+	flex-direction: row;
+	justify-content: right;
+}
+div.search.language  form div div:last-child{
+	background: white;
+	width: 4em;
+	height: 1.4em;
+	border-left: 5px outset #f50;
+	border-top: 2px inset #f50;
+	border-bottom: 2px inset #f50;
+	justify-content: space-around;
+	align-items: center;
+	float: right;
+	margin-left: auto;
+}
+div.search.language  form div div:last-child a{
+	text-decoration: none;
+	text-align: center;
+
+}
+div.search.language  form div div:last-child{ 
+	padding: 0;
+	width: .39em;
+} 	
+div.search.language  form div div:last-child a{
+	display: none;
+}
+div.search.language i.search-ci{
+	color: #E2E1D9;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	height: 1.4em;
+	justify-content: center;
+	text-align: center;
+	width: 1.4em;
+	font-size: 1em;
+	background: #f50;
+}
+div.search.language i.search-ci:hover{
+	color: #B9B5AD;
+}

@@ -1,0 +1,96 @@
+.content-blog-start{
+    margin-bottom: 15px;
+    margin-top:15px;
+    display: flex;
+    flex-direction: column;
+    background: #e5e7f4;
+    padding: 10px !important;
+}
+
+.UserProfile{
+    display: flex;
+}
+.UserProfile *{
+    margin: 0 5px 0 0 ;
+}
+.UserProfile{
+    align-items: center;
+    max-height: 50%;
+    font-size: 14px;
+}
+.UserIcon{
+    max-height: 1.5em;
+}
+.nameOfUser::after{
+    content: "Tonight in 7:32";
+    font-size: 14px;
+    color: grey;
+    text-transform: lowercase;
+    font-family: monospace;
+    margin-left: 5px;
+}
+.ImgOfPost{
+    max-width:100%;
+}
+div.InfoNInteractive{
+}
+div.votePull{
+    display: flex;
+    flex-direction: row;
+}
+.content-blog-start{
+    margin-bottom: 15px;
+    margin-top:15px;
+}
+.content-blog-start .col-12{
+    padding: 0;
+}
+
+.col-12 .votePull{
+    padding: 0;
+    float: left;
+    text-align: center;
+}
+.commentsNpull{
+}
+
+.content-blog-start .col-12{
+    padding: 0;
+}
+
+.col-12 .votePull{
+    padding: 0;
+    float: left;
+    text-align: center;
+}
+.commentsNpull{
+}
+.icon {
+  width: 16px;
+  height: 16px;
+}
+.description{
+    word-wrap: break-word;
+}
+.yeah{
+    display: inline-flex;
+    padding: 0 !important;
+    justify-content: space-between;  
+}
+.tagsOfPost{
+    margin: 0 0 1em 0;
+}
+.votePull div{
+    padding: 0;
+    width: 2em !important;
+    align-self: center;
+    font-family: sans-serif;
+    border-radius: 4px; 
+}
+.votePull div:nth-child(3){
+    background: grey !important;
+    color: white;
+}
+.votePull div:first-child{
+    border:0!important;
+}

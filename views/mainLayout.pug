@@ -1,0 +1,137 @@
+doctype html
+head
+    title Pan and cookies
+    meta(charset='UTF-8')
+    link(rel='stylesheet' type='text/css' href='stylesheets/sideSection.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/mainSection.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/commonPostStyle.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/footerStyle.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/mainHeaderStyle.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/mainStyleUndepended.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/navAllStyle.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/mainPage.css')
+    link(rel='shortcut icon' href='images/favicon.ico' type='image/x-icon')
+    link(href='/open-iconic/font/css/open-iconic-bootstrap.css' rel='stylesheet')
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous')
+#main_header_tools.tools
+    p
+        span#main_site Maestro
+        a(href='') Virtuoso
+        a(href='') Compositor
+        a(href='') Libretto
+        a(href='') Opera
+// <div class="logoOfSite"><img src="images/Burn.jpg" alt="logoSSS" class="imgLogo"></div>
+#colorChangemh
+    #check1.container
+        nav#main_navbar.navbar.navbar-light
+            .col.col-1
+                a.navbar-brand(href='#')
+                    img.logoOfSite(src='images/Burn.jpg' alt='icon')
+            .col.col-11.check
+                .customNav
+                    a.navpart(href='#')
+                        div
+                            p home
+                    a.navpart(href='#')
+                        div
+                            p news
+                    a.navpart(href='#')
+                        div
+                            p publication
+                    a.navpart(href='#')
+                        div
+                            p forum
+                    a.navpart(href='#')
+                        div
+                            p sandbox
+                .nav.logs1
+                    .search.language
+                        //
+                          <img class="search-ci" src="images/sear.png">
+                          <img class="search-ci" src="images/lan.png">
+                        form.searchAn(action='#')
+                            .input-anm
+                                .inputPlace
+                                    input#search-anm-1.anm(type='search')
+                                #choice-lan.lanChoise
+                                    a.lan-links(href='') EN
+                                    a.lan-links(href='') RU
+                            .icons-anm
+                                i#search-anm-i-1.fas.fa-search.search-ci
+                                i#search-anm-i-2.fas.fa-globe.search-ci
+                    form.logs(action='')
+                        .logsForms
+                            input(name='login')
+                            input(type='password')
+                        .logsButtons
+                            button.btnNav
+                                a(href='#') Log in
+                            button.btnNav
+                                a(href='/reg') Sign up
+#main_section_content.col.content
+    .container
+        #hei.row
+            .col.col-9
+                .col-12.content-blog-start
+                    .col-12.UserProfile
+                        img.UserIcon(src='images/testIco.png' alt='icon')
+                        p.nameOfUser UserName
+                        // After date
+                    h4.nameOfPost #{name}
+                    .tagsOfPost
+                        a(href='#') #Programming
+                        a(href='#') #Adminstarion
+                    .col-12
+                        img.ImgOfPost(src='images/exp.jpg' alt='postImg')
+                    .col-12.InfoNInteractive
+                        // Comments/Marks/PullforVote/descrip <
+                        .col-12.description
+                            p.desSec #{content}
+                        .col.yeah
+                            .commentsNpull
+                                a.comments(href='#')
+                                    | 255
+                                    i.far.fa-comment-alt
+                            .col-2.votePull
+                                .col-3
+                                .col-3
+                                    i.fas.fa-angle-up
+                                .col-3.mark 69
+                                .col-3
+                                    i.fas.fa-angle-down
+
+            .col.col-3
+                .block
+                    a(href='#')
+                        img(src='https://cs8.pikabu.ru/post_img/2017/08/06/7/1502019934151881439.jpg' alt='adv')
+                    a.adv(href='#') &Rcy;&iecy;&kcy;&lcy;&acy;&mcy;&acy;
+                ul.list-group
+                    li.list-group-item.active &Rcy;&acy;&zcy;&dcy;&iecy;&lcy;&ycy;
+                    li.list-group-item Jasper Kyd
+                    li.list-group-item Michael McCann
+                    li.list-group-item lipsum3
+                    li.list-group-item lipsum3
+                    // li.list-group-item{JJJJJ $}*40
+                ul.second-list.list-group
+                    li.second.list-group-item.active Popular
+                    li.second.list-group-item PostNameViewsandComments
+                    li.second.list-group-item PostNameViewsandComments
+                    li.second.list-group-item PostNameViewsandComments
+                    li.second.list-group-item PostNameViewsandComments
+                    li.second.list-group-item PostNameViewsandComments
+                    li.second.list-group-item PostNameViewsandComments
+                    li.second.list-group-item PostNameViewsandComments
+                    li.second.list-group-item PostNameViewsandComments
+                    li.second.list-group-item PostNameViewsandComments
+                    li.second.list-group-item PostNameViewsandComments
+        // (.row>col-12>p{$}*20)*20
+footer.page-footer
+    .footer-copyright.text-center.py-3
+        | &copy; 2018 Copyright:
+        a(href='file:///C:/First%20Site%20and%20Try/site.html')
+            | Glimpse!
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+script(src='javascripts/JS.js')

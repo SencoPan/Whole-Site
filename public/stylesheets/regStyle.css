@@ -1,0 +1,80 @@
+body{
+    outline: none;
+}
+form{
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 420px;
+    background-color: white;
+}
+input:not([type="checkbox"]){
+    border: 1px solid #5770A9;
+    height: 2em;
+    border-radius: 2px;
+}
+input:focus:not([value="Sign Up"]) {
+    border: 3px solid #7181ff;
+}
+label:not(.checkLab){
+    margin-top: 1em;
+}
+input[value="Sign Up"]{
+    margin: 1em auto 0 auto;
+    height: 3em;
+    background-color: #3333f6;
+    border-radius: 2px;
+    color: white;
+    width: 100%;
+}
+input[value="Sign Up"]:hover {
+    background-color: #35419d;
+}
+input[value="Sign Up"]:active {
+    color: #a09a9a;
+}
+.captchaSt{
+    /*margin: 0 auto 0 auto;*/
+    margin-top: 1em;
+
+}
+.addBlock{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #fff;
+    width: 420px;
+    padding: 1%;
+    margin-top: 1em;
+}
+
+.regBlock{
+    padding: 1% 0 1% 0;
+    margin: 5% 0 2% 0;
+    height: auto;
+    background: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.radioUrAgmnt{
+    cursor: pointer;
+    -moz-user-select: none;
+    display: flex;
+    flex-direction: row;
+    margin: 1em 0 0 0;
+    font-size: 18px;
+}
+.radioUrAgmnt input{
+    margin-right: .5em;
+}
+h1{
+    margin: 0 auto 0 auto;
+    font-family: monospace;
+}
+input[type="checkbox"]:focus{
+    outline:0;
+}

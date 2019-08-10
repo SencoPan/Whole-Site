@@ -1,0 +1,26 @@
+#main_header_tools {
+	background: #e5e5e5  /* url("http://ilyakhasanov.ru/images/background/46.png")*/ repeat;
+	text-shadow: 0px 1px 0 #eee;
+	flex: auto;
+	width: 100vw;
+	height: 20px;
+	border-top:1px groove #9f6;
+}
+
+#main_site {
+	color: #ff9500;
+	font-weight: bold;	
+}
+
+.tools a,.tools p{
+	margin: 0;
+ 	font-size: 10px;
+ 	padding-left: 6px;
+ 	font-weight: bold;	
+ 	font-family: monospace;
+}
+.tools a{
+	display: inline-block;
+	margin-top: 3px;	
+	text-decoration: none;
+}

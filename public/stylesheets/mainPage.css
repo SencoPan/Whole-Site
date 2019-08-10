@@ -1,0 +1,117 @@
+button + [aria-labelledby="dropdownMenuButton"] a.dropdown-item{
+	width: 180px;
+	font-size: 15px;
+}
+
+button#dropdownMenuButton{
+	margin-top: 20px; 
+	margin-bottom: 20px;
+	font-size: 25px;
+	width: 180px;
+	color: #fff;
+	background: #5159d0;
+	text-align: left;
+}
+
+button#dropdownMenuButton:active, button#dropdownMenuButton:hover{
+	background: #35419d;
+	color: #eee;
+}
+
+
+#mod .col-2{
+	transition: all 1s ease-in-out;
+	text-align: center;
+	height: 40px;
+	font-size: 23px;
+	cursor: pointer;
+	color: #775e5e;
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+#mod .col-2 p.right-now-in{
+	display: block;
+	color: #5b5ba1;
+	border-bottom: 2px solid #5b5ba1;
+	
+}
+#mod .col-2 p:active{	
+
+	display: block;
+	color: #5b5ba1;
+	border-bottom: 2px solid #5b5ba1;
+}
+.side.row + hr{
+	margin-top: -6.8px;
+	border-top: 1px solid #a09a9a;
+}
+
+.row .col-5 ul.content-buttons{
+	-moz-user-select: none;
+	background: #f7f7f7;
+	border-radius: 6px;
+	display: inline-flex;
+	float: left;
+	font-family: monospace, serif;
+	font-size: 14px;
+	height: auto;
+	list-style: none;	
+	margin-block-start: 1em;
+	margin-top: 0;
+	padding:0 3% 0 0;
+	text-align: center;	
+	justify-content: space-around;
+}
+.row .col-5 ul.content-buttons li{
+	background: #f7f7f7;
+	border:2px solid #f7f7f7;
+	color: #969eff;
+	cursor: pointer;
+	display:inline-block;
+	float: left;
+	font-weight: bold;
+	margin: 4px 0px;
+	outline: none;
+	text-align: center;
+	width:70px;
+}
+.row .col-5 ul.content-buttons li a{
+	text-decoration: none;
+	display: block;
+	height: inherit;
+	background: #fff;
+	border: 1px solid #7181ff;
+	font-family: monospace;
+	border-radius: 4px;
+	line-height: 35px
+}
+.row .col-5 ul.content-buttons li a:active{
+	background: #fff;
+	border: 1px solid #7181ff;
+}
+.row .col-5 ul.content-buttons li:hover{
+	/* border-left: 2px solid #969eff;
+	border-right: 2px solid #969eff; */
+}
+.row .col-5 ul.content-buttons li a:active, .row .col-5 ul.content-buttons li a.right-now-in{
+	background: #7181ff;
+	box-shadow: 0 0 0 #000, 1px 1px 1px #3333f6, 0 0 0 #000, 0 0 0 #000;
+	color: #fff;
+	border: none;
+}
+.row .col-5 ul.content-buttons li a button{
+	width: 90px;
+}
+#mod .col-2 div{
+	min-width: 87px;
+}
+#mod .col-2 div{
+	min-width: 87px;
+	margin-right: 2%;
+}

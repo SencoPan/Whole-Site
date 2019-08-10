@@ -1,0 +1,48 @@
+doctype html
+head
+    title Pan and cookies
+    meta(charset='UTF-8')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+    script(src="https://www.google.com/recaptcha/api.js" async defer)
+
+    link(rel='stylesheet' type='text/css' href='stylesheets/mainSection.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/footerStyle.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/mainStyleUndepended.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/mainPage.css')
+    link(rel='stylesheet' type='text/css' href='stylesheets/regStyle.css')
+
+    link(rel='shortcut icon' href='images/favicon.ico' type='image/x-icon')
+    link(href='/open-iconic/font/css/open-iconic-bootstrap.css' rel='stylesheet')
+    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous')
+.container
+    .col-12.regBlock
+      form(method="post" class="registration" action='/')
+          h1 Registration
+          label First Name
+          input(type="text" name="FirstName")
+          label Second Name
+          input(type="text" name="SecondName")
+          label Login
+          input(type="text" name="login")
+          label Email
+          input(type="text" name="email")
+          label Password
+          input(type="password" name="password")
+          label Password Check
+          input(type="password" name="passwordCheck")
+          .radioUrAgmnt
+              input(type="checkbox" name="userAgreement")
+              | I accept
+              a(href="/info" style="margin-left:5px;")  User agreement
+          .g-recaptcha.captchaSt(data-sitekey='6LeKZrIUAAAAALM7WENeNTi8b7rsZ_DCTQJArb8h')
+          input(type='submit' value='Sign Up')
+      .addBlock
+        a(href="/") Main Page
+        a(href='/login') Login
+
+
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+script(src='javascripts/JS.js')
+script(src='javascripts/regScript.js')

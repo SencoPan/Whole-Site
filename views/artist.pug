@@ -1,0 +1,12 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        form(method='post' action='/')
+            label Input some text
+            input(type='text' name='content')
+            label Input theme of post
+            input(type='text' name='Title')
+            button(type='submit') Submit
