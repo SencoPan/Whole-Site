@@ -1,13 +1,15 @@
 $(".registration").on("submit", submitForm);
+
 $(".radioUrAgmnt").on("click",(e) => {
     let change = $(".radioUrAgmnt").find(":checkbox");
+    console.log($('input[type="checkbox"]').val())
     if ( e.target === change[0] ) {
-        //
     }
     else{
         change.prop("checked") === true ? change.prop("checked", false) : change.prop("checked", true);
     }
 })
+
 function submitForm(event){
     event.preventDefault();
 
@@ -18,7 +20,7 @@ function submitForm(event){
     const passwordCheck = $("input[name='passwordCheck']").val()
     const login = $("input[name='login']").val()
     const captcha = $("#g-recaptcha-response").val()
-    const radioUsrAgmnt = $('input[type="radio"]').val()
+    const radioUsrAgmnt = $('input[type="checkbox"]').val()
 
     console.log(login);
 

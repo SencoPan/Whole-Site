@@ -1,29 +1,29 @@
 
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser')
-var logger = require('morgan');
-const format = require('node.date-time');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser')
+let logger = require('morgan');
+let format = require('node.date-time');
 let request = require("request");
 
 
 
-var ObjectID = require('mongodb').ObjectID;
+let ObjectID = require('mongodb').ObjectID;
 
-var db = require("./db");
+let db = require("./db");
+const User = db.User;
+
+let indexRouter = require('./routes/index');
+let usersRouter = require('./routes/users');
 
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+let app = express();
 
+let urlencodedParser = bodyParser.urlencoded({ extended : false });
 
-var app = express();
-
-var urlencodedParser = bodyParser.urlencoded({ extended : false });
-
-var test;
+let test;
 
 db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
 
@@ -80,6 +80,23 @@ app.post('/reg', (req, res)=>{
         }
 
         // If successful
+        //db.
+
+        let dataRes = req.body;
+
+        var newUser = new User();
+        newUser.login = dataRes.login;
+        newUser.email = dataRes.email;
+        newUser.firstName = dataRes.firstName;
+        newUser.secondName= dataRes.secondName;
+
+        newUser.save((err, savedUser) => {
+            if(err) {
+                console.log(err);
+                res.sendStatus(500)
+            }
+        })
+
         return res.json({ "success": true, "msg": "Captcha passed" })
     })
 })
