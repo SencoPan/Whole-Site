@@ -89,6 +89,7 @@ app.post('/reg', (req, res)=>{
         newUser.email = dataRes.email;
         newUser.firstName = dataRes.firstName;
         newUser.secondName= dataRes.secondName;
+        newUser.password = dataRes.password;
 
         newUser.save((err, savedUser) => {
             if(err) {

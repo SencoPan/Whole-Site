@@ -28,10 +28,15 @@ input[value="Sign Up"]{
     color: white;
     width: 100%;
 }
-input[value="Sign Up"]:hover {
+input[value="Sign Up"].disabled {
+    background: #5770A9;
+    cursor: not-allowed;
+}
+
+input[value="Sign Up"].activated:hover {
     background-color: #35419d;
 }
-input[value="Sign Up"]:active {
+input[value="Sign Up"].activated:active {
     color: #a09a9a;
 }
 .captchaSt{
