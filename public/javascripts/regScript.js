@@ -33,6 +33,14 @@ $(".radioUrAgmnt").on("click",(e) => {
     let change = $(".radioUrAgmnt").find(":checkbox");
     let wholeForm = $(".registration")
     let submitBut = $("input[type='submit']");
+
+    if ( e.target === change[0] ) {
+
+    }
+    else{
+        change.prop("checked") === true ? change.prop("checked", false) : change.prop("checked", true);
+    }
+
     if(change.prop("checked") === true ){
         submitBut.addClass("activated").removeClass("disabled");
         wholeForm.addClass("activated").removeClass("disabled");
@@ -47,12 +55,7 @@ $(".radioUrAgmnt").on("click",(e) => {
         });
     }
 
-    if ( e.target === change[0] ) {
 
-    }
-    else{
-        change.prop("checked") === true ? change.prop("checked", false) : change.prop("checked", true);
-    }
 })
 
 function submitForm(event){

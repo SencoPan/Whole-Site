@@ -27,7 +27,7 @@ exports.connect = (url, done) => {
         if(err){
             return console.log(err);
         }
-        state.db = database.db("dedas");
+        state.db = database.db("nodeExp");
         done(false, state.db);
     });
 }

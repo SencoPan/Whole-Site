@@ -54,7 +54,23 @@ app.use(bodyParser.json())
 app.get('/test', (req, res) => {
   res.sendFile(__dirname + "/htmlTest.html")
 });
+app.post("/login", (req, res) =>{
+    let username = req.body.login;
+    let password = req.body.password;
 
+    db.collection("users").findOne({ username: username, password: password }, (err, user) => {
+        if(err){
+            console.log(err);
+        }
+        if(!user){
+            return res.sendStatus(404);
+        }
+        else{
+            res.render("/logged");
+        }
+    });
+
+});
 app.post('/reg', (req, res)=>{
     if(
         req.body.captcha === undefined ||
@@ -80,11 +96,10 @@ app.post('/reg', (req, res)=>{
         }
 
         // If successful
-        //db.
 
         let dataRes = req.body;
 
-        var newUser = new User();
+        let newUser = new User();
         newUser.login = dataRes.login;
         newUser.email = dataRes.email;
         newUser.firstName = dataRes.firstName;
@@ -98,16 +113,14 @@ app.post('/reg', (req, res)=>{
             }
         })
 
-        return res.json({ "success": true, "msg": "Captcha passed" })
+        return res.json({ "success":true, "msg":"Successed verification" });
     })
-})
 
+})
 
 app.get("/check", (req, res) => {
   res.render("mainPost");
 })
-
-
 
 app.get("/", (req, res) =>{
   db.collection('artists').find().toArray((err, docs) => {
