@@ -60,7 +60,6 @@ $(".radioUrAgmnt").on("click",(e) => {
 
 function submitForm(event){
     event.preventDefault();
-
     const firstName = $("input[name='FirstName']").val()
     const secondName = $("input[name='SecondName']").val()
     const email = $("input[name='email']").val()

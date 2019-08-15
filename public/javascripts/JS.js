@@ -143,4 +143,7 @@ $(function(undefined) {
 		}
 	})
 	console.table({togDateInClass})
+	$("form.logs").on("submit", (event)=>{
+		event.preventDefault();
+	});
 }(undefined))

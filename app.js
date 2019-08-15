@@ -54,7 +54,7 @@ app.use(bodyParser.json())
 app.get('/test', (req, res) => {
   res.sendFile(__dirname + "/htmlTest.html")
 });
-app.post("/login", (req, res) =>{
+app.post("/check", (req, res, next) =>{
     let username = req.body.login;
     let password = req.body.password;
 
@@ -66,11 +66,15 @@ app.post("/login", (req, res) =>{
             return res.sendStatus(404);
         }
         else{
-            res.render("/logged");
+            console.log(user);
+            res.redirect("/logged");
         }
     });
-
+    next()
 });
+app.all("/login", (req, res)=>{
+    res.render('logged')
+})
 app.post('/reg', (req, res)=>{
     if(
         req.body.captcha === undefined ||
