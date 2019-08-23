@@ -54,26 +54,26 @@ app.use(bodyParser.json())
 app.get('/test', (req, res) => {
   res.sendFile(__dirname + "/htmlTest.html")
 });
-app.post("/check", (req, res, next) =>{
+app.post("/login", (req, res, next) =>{
     let username = req.body.login;
     let password = req.body.password;
-
-    db.collection("users").findOne({ username: username, password: password }, (err, user) => {
+    console.log('test', password, username);
+    db.collection("users").findOne({ login : username, password: password }, (err, user) => {
         if(err){
             console.log(err);
         }
         if(!user){
+            console.log(user);
             return res.sendStatus(404);
         }
         else{
-            console.log(user);
-            res.redirect("/logged");
+            console.log('We are sure used this block!');
+            res.redirect(307, "/logged");
         }
     });
-    next()
 });
-app.all("/login", (req, res)=>{
-    res.render('logged')
+app.all("/logged", (req, res)=>{
+    res.render('logged');
 })
 app.post('/reg', (req, res)=>{
     if(
@@ -117,9 +117,10 @@ app.post('/reg', (req, res)=>{
             }
         })
 
-        return res.json({ "success":true, "msg":"Successed verification" });
-    })
 
+        return res.json({'success':true, 'msg': "true"});
+
+    })
 })
 
 app.get("/check", (req, res) => {

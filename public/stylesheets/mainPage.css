@@ -88,7 +88,7 @@ button#dropdownMenuButton:active, button#dropdownMenuButton:hover{
 	background: #fff;
 	border: 1px solid #7181ff;
 	font-family: monospace;
-	border-radius: 4px;
+	/*border-radius: 4px;*/
 	line-height: 35px
 }
 .row .col-5 ul.content-buttons li a:active{

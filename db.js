@@ -1,20 +1,20 @@
-var mongoClient = require("mongodb").MongoClient;
+let mongoClient = require("mongodb").MongoClient;
 
-var mongoose = require("mongoose")
+let mongoose = require("mongoose")
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+let userSchema = new Schema({
     login       : { type: String, unique: true },
     email       : { type: String, unique: true },
     password    : { type: String },
     firstName   : String,
     secondName  : String
 })
-var User = mongoose.model("Users", userSchema);
+let User = mongoose.model("Users", userSchema);
 mongoose.set('useCreateIndex', true);
 
-var state = {
+let state = {
     db: null
 }
 
@@ -33,7 +33,7 @@ exports.connect = (url, done) => {
 }
 
 const chech = function(number){
-    state.db.collection('artists').find().toArray((err, docs) => {
+    state.db.collection('users').find().toArray((err, docs) => {
         if (err) {
             console.log(err);
             return res.sendStatus(500);

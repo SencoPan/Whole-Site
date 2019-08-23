@@ -59,6 +59,7 @@ $(".radioUrAgmnt").on("click",(e) => {
 })
 
 function submitForm(event){
+
     event.preventDefault();
     const firstName = $("input[name='FirstName']").val()
     const secondName = $("input[name='SecondName']").val()
@@ -77,6 +78,7 @@ function submitForm(event){
             'Accept' : 'application/json, text/plain, */*',
             'Content-type':'application/json'
         },
+        redirect: "follow",
         body: JSON.stringify({
             firstName : firstName ,
             secondName : secondName ,
@@ -88,6 +90,12 @@ function submitForm(event){
             radioUsrAgmnt : radioUsrAgmnt
         })
     })
-        .then((res) => {return res.json()})
-        .then((data) => {console.log(data)})
+        .then(function(response) {
+
+            return response.json();
+        })
+        .then(function(myJson) {
+            console.log(JSON.stringify(myJson));
+        })
+
 }
