@@ -1,14 +1,14 @@
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser')
+const logger = require('morgan');
+const format = require('node.date-time');
+const request = require("request");
+const multer = require('multer');
 
-let createError = require('http-errors');
-let express = require('express');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let bodyParser = require('body-parser')
-let logger = require('morgan');
-let format = require('node.date-time');
-let request = require("request");
-
-
+const session = require("express-session");
 
 let ObjectID = require('mongodb').ObjectID;
 
@@ -23,7 +23,8 @@ let app = express();
 
 let urlencodedParser = bodyParser.urlencoded({ extended : false });
 
-let test;
+const ONE_HOUR = 1000 * 60 * 60;
+const SESS_LIFETIME = ONE_HOUR;
 
 db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
 
@@ -48,8 +49,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use(bodyParser.json())
 
+/*app.use(session({
+    secret: true,
+    name: "King",
+    proxy: true,
+    resave: true,
+    saveUninitialized: true
+}));*/
 
 app.get('/test', (req, res) => {
   res.sendFile(__dirname + "/htmlTest.html")
@@ -81,7 +90,7 @@ app.post('/reg', (req, res)=>{
         req.body.captcha === ''        ||
         req.body.captcha === null
     ){
-        return res.json({ "success": false, "msg": "Please select captcha" })
+        return false;
     }
 
     //secret Key
@@ -96,7 +105,7 @@ app.post('/reg', (req, res)=>{
 
         // if not successful
         if (body.success !== undefined && !body.success) {
-            return res.json({ "success": false, "msg": "Failed captcha vefication." })
+            return false;
         }
 
         // If successful
@@ -118,8 +127,7 @@ app.post('/reg', (req, res)=>{
         })
 
 
-        return res.json({'success':true, 'msg': "true"});
-
+        return res.json({ "success": true, "msg": "ture" })
     })
 })
 

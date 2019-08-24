@@ -8,6 +8,12 @@ $(".registration.probPass").on("submit.prob1", (event) => {
     alert("Your password doesn't match");
 });
 
+if($(".radioUrAgmnt").find(":checkbox").prop("checked") === true){
+    $(".registration").addClass("activated").removeClass("disabled");
+    $("input[type='submit']").addClass("activated").removeClass("disabled");
+    $(".registration").off("submit.prob2")
+}
+
 $("input[name='passwordCheck']").on("mouseout", (event) => {
     let first = $("input[name='passwordCheck']");
     let second = $("input[name='password']");
@@ -31,7 +37,7 @@ $("input[name='passwordCheck']").on("mouseout", (event) => {
 
 $(".radioUrAgmnt").on("click",(e) => {
     let change = $(".radioUrAgmnt").find(":checkbox");
-    let wholeForm = $(".registration")
+    let wholeForm = $(".registration");
     let submitBut = $("input[type='submit']");
 
     if ( e.target === change[0] ) {
@@ -72,30 +78,38 @@ function submitForm(event){
 
     console.log(login);
 
-    fetch("/reg", {
-        method:"POST",
-        headers:{
-            'Accept' : 'application/json, text/plain, */*',
-            'Content-type':'application/json'
+    $.ajax({
+        url: "/reg",
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify({
+            firstName: firstName ,
+            secondName: secondName ,
+            email: email ,
+            password: password ,
+            passwordCheck: passwordCheck ,
+            login: login ,
+            captcha: captcha,
+            radioUsrAgmnt: radioUsrAgmnt
+        }),
+        contentType: "application/json",
+        cache: false,
+        complete: function() {
+            //called when complete
+            console.log('process complete');
+            alert("Captcha is failed");
         },
-        redirect: "follow",
-        body: JSON.stringify({
-            firstName : firstName ,
-            secondName : secondName ,
-            email : email ,
-            password : password ,
-            passwordCheck : passwordCheck ,
-            login : login ,
-            captcha : captcha,
-            radioUsrAgmnt : radioUsrAgmnt
-        })
-    })
-        .then(function(response) {
 
-            return response.json();
-        })
-        .then(function(myJson) {
-            console.log(JSON.stringify(myJson));
-        })
+        success: function(data) {
+            console.log(data);
+            console.log('process sucess');
+            window.location.replace("/");
+        },
+
+        error: function() {
+            console.log('process error');
+        },
+    });
+
 
 }
