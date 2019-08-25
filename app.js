@@ -59,7 +59,10 @@ app.use(bodyParser.json())
     resave: true,
     saveUninitialized: true
 }));*/
-
+app.get("/check", (req, res) => {
+    res.render("mainLayout")
+    }
+);
 app.get('/test', (req, res) => {
   res.sendFile(__dirname + "/htmlTest.html")
 });
@@ -77,13 +80,11 @@ app.post("/login", (req, res, next) =>{
         }
         else{
             console.log('We are sure used this block!');
-            res.redirect(307, "/logged");
+            res.redirect(307, "/");
         }
     });
 });
-app.all("/logged", (req, res)=>{
-    res.render('logged');
-})
+
 app.post('/reg', (req, res)=>{
     if(
         req.body.captcha === undefined ||
@@ -131,11 +132,11 @@ app.post('/reg', (req, res)=>{
     })
 })
 
-app.get("/check", (req, res) => {
+app.get("/", (req, res) => {
   res.render("mainPost");
 })
 
-app.get("/", (req, res) =>{
+/*app.get("/", (req, res) =>{
   db.collection('artists').find().toArray((err, docs) => {
     if(err) {
       console.log(err);
@@ -144,7 +145,7 @@ app.get("/", (req, res) =>{
     console.log(docs);
     res.render("mainLayout", {name: docs[0].name , content: docs[0].content});
   })
-});
+});*/
 
 /*app.post('/', urlencodedParser, (req, res) => {
   if(!req.body) return res.sendStatus(400);

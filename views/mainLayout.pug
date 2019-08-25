@@ -60,47 +60,19 @@ head
                             .icons-anm
                                 i#search-anm-i-1.fas.fa-search.search-ci
                                 i#search-anm-i-2.fas.fa-globe.search-ci
-                    form.logs(action='')
+                    form.logs(action='/login' method="post")
                         .logsForms
-                            input(name='login')
-                            input(type='password')
+                            input(type='text' name='login')
+                            input(type='password' name="password")
                         .logsButtons
-                            button.btnNav
-                                a(href='#') Log in
+                            input(type='submit' value="Log in").btnNav
                             button.btnNav
                                 a(href='/reg') Sign up
 #main_section_content.col.content
     .container
         #hei.row
             .col.col-9
-                .col-12.content-blog-start
-                    .col-12.UserProfile
-                        img.UserIcon(src='images/testIco.png' alt='icon')
-                        p.nameOfUser UserName
-                        // After date
-                    h4.nameOfPost #{name}
-                    .tagsOfPost
-                        a(href='#') #Programming
-                        a(href='#') #Adminstarion
-                    .col-12
-                        img.ImgOfPost(src='images/exp.jpg' alt='postImg')
-                    .col-12.InfoNInteractive
-                        // Comments/Marks/PullforVote/descrip <
-                        .col-12.description
-                            p.desSec #{content}
-                        .col.yeah
-                            .commentsNpull
-                                a.comments(href='#')
-                                    | 255
-                                    i.far.fa-comment-alt
-                            .col-2.votePull
-                                .col-3
-                                .col-3
-                                    i.fas.fa-angle-up
-                                .col-3.mark 69
-                                .col-3
-                                    i.fas.fa-angle-down
-
+                block content
             .col.col-3
                 .block
                     a(href='#')
