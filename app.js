@@ -4,36 +4,34 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 const logger = require('morgan');
-const format = require('node.date-time');
 const request = require("request");
-const multer = require('multer');
+const authRouters = require("./routes/login.js")
+//const multer = require('multer');
+//const format = require('node.date-time');
 
-const session = require("express-session");
+//const session = require("express-session");
 
 let ObjectID = require('mongodb').ObjectID;
 
 let db = require("./db");
 const User = db.User;
 
-let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
+//let indexRouter = require('./routes/index');
+//let usersRouter = require('./routes/users');
 
 
 let app = express();
 
 let urlencodedParser = bodyParser.urlencoded({ extended : false });
 
-const ONE_HOUR = 1000 * 60 * 60;
-const SESS_LIFETIME = ONE_HOUR;
+//const ONE_HOUR = 1000 * 60 * 60;
+//const SESS_LIFETIME = ONE_HOUR;
 
 db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
-
   if(err){
     return console.log(err);
   }
-
   db = state;
-
 });
 
 
@@ -48,7 +46,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/auth', authRouters)
 
 app.use(bodyParser.json())
 
@@ -59,17 +57,14 @@ app.use(bodyParser.json())
     resave: true,
     saveUninitialized: true
 }));*/
-app.get("/check", (req, res) => {
-    res.render("mainLayout")
-    }
-);
-app.get('/test', (req, res) => {
-  res.sendFile(__dirname + "/htmlTest.html")
-});
-app.post("/login", (req, res, next) =>{
+
+app.post("/login", (req, res) =>{
+
     let username = req.body.login;
     let password = req.body.password;
+
     console.log('test', password, username);
+
     db.collection("users").findOne({ login : username, password: password }, (err, user) => {
         if(err){
             console.log(err);
@@ -120,46 +115,44 @@ app.post('/reg', (req, res)=>{
         newUser.secondName= dataRes.secondName;
         newUser.password = dataRes.password;
 
-        newUser.save((err, savedUser) => {
+        newUser.save((err) => {
             if(err) {
                 console.log(err);
                 res.sendStatus(500)
             }
         })
 
-
         return res.json({ "success": true, "msg": "ture" })
     })
+})
+
+app.get('/reg', (req, res) => {
+    res.render("registration");
 })
 
 app.get("/", (req, res) => {
   res.render("mainPost");
 })
 
-/*app.get("/", (req, res) =>{
-  db.collection('artists').find().toArray((err, docs) => {
-    if(err) {
-      console.log(err);
-      return res.sendStatus(500);
+app.get("/check", (req, res) => {
+        res.render("mainLayout")
     }
-    console.log(docs);
-    res.render("mainLayout", {name: docs[0].name , content: docs[0].content});
-  })
-});*/
+);
 
-/*app.post('/', urlencodedParser, (req, res) => {
-  if(!req.body) return res.sendStatus(400);
-  console.log(req.body);
-  res.render('mainLayout', {data: req.body});
-});*/
+app.get('/test', (req, res) => {
+    res.sendFile(__dirname + "/htmlTest.html")
+});
 
 app.post("/", urlencodedParser, (req, res) =>{
-  var artist = {
+
+  const artist = {
     name: req.body.Title,
     content: req.body.content
   }
+
   console.log(artist);
-  db.collection("artists").insertMany([artist], (err, result) => {
+
+  db.collection("artists").insertMany( [artist], ( err, result ) => {
     if(err) {
       console.log(err)
       res.sendStatus(500);
@@ -168,40 +161,23 @@ app.post("/", urlencodedParser, (req, res) =>{
   res.render("mainPost");
 });
 
-app.get("/reg", (req, res) =>{
-  const func = () => db.collection('artists').insertMany(["hello", "world"], (err, result) => {
-    if(err) {
-      console.log(err)
-      res.sendStatus(500);
-    }
-  });
-  res.render('registration', { func1 : func });
-})
+
 app.get("/test/:id", (req, res)=>{
   db.collection('artists').updateOne(
       { _id: ObjectID(req.params.id) },
       { $set : { name: "the name of the lord" } },
-      (err, result) => {
+      (err) => {
         if(err) {
           console.log(err);
           return res.sendStatus(500)
-        };
+        }
         db.collection('artists').findOne({_id: ObjectID(req.params.id)}, (err, docs) => {
           if (err) {console.log(err);
             return res.sendStatus(500);
           }
           console.log(docs);
-          res.render("index", {testText: docs.name + ' ' + docs.content})
+          res.render("home-page.js", {testText: docs.name + ' ' + docs.content})
         })})
-
-  /*db.collection('artists').findOne({_id: ObjectID(req.params.id)}, (err, docs) => {
-    if (err) {console.log(err);
-    return res.sendStatus(500);
-  }
-    console.log(docs);
-    res.render("index", {testText: docs.name + ' ' + docs.content})
-  })*/
-
 })
 
 // catch 404 and forward to error handler
@@ -210,7 +186,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
