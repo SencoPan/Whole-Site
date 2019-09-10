@@ -1,11 +1,12 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser')
-const logger = require('morgan');
-const request = require("request");
-const authRouters = require("./routes/login.js")
+const   createError = require('http-errors'),
+        express = require('express'),
+        path = require('path'),
+        cookieParser = require('cookie-parser'),
+        bodyParser = require('body-parser')
+        logger = require('morgan'),
+        request = require("request"),
+        authRouters = require("./routes/login.js")
+        sassMiddleware = require('node-sass-middleware');
 //const multer = require('multer');
 //const format = require('node.date-time');
 
@@ -40,6 +41,14 @@ db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use(sassMiddleware({
+    src: path.join(__dirname, '/public/sass'),
+    dest: path.join(__dirname, '/public/stylesheets'),
+    debug: true,
+    indentedSyntax: true,
+    outputStyle: 'compressed',
+    prefix: '/stylesheets'
+}));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -128,16 +137,15 @@ app.post('/reg', (req, res)=>{
 
 app.get('/reg', (req, res) => {
     res.render("registration");
-})
+});
 
 app.get("/", (req, res) => {
   res.render("mainPost");
-})
+});
 
 app.get("/check", (req, res) => {
         res.render("mainLayout")
-    }
-);
+});
 
 app.get('/test', (req, res) => {
     res.sendFile(__dirname + "/htmlTest.html")

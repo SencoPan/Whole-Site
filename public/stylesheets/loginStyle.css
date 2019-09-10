@@ -1,0 +1,51 @@
+.other-option, .option-span{
+    display: inline-flex;
+    text-align: center;
+    padding: 2%;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 420px;
+    background-color: white;
+    align-content: center;
+    justify-content: center;
+}
+.option-span{
+    height: 4em;
+    padding: .1em;
+    align-items: center;
+}
+.option-span span{
+    margin: 0;
+    font-size: 30px;
+}
+.block-for-options{
+    display: inline-block;
+    width: 14em;
+    margin: .5em;
+    font-size: 18px;
+    align-self: center;
+    color: white;
+    align-content: center;
+    justify-content: center;
+}
+.block-for-options{
+    align-items: center;
+    border: .5px solid black;
+}
+.block-for-options:nth-child(1){
+    background: #a5342b;
+}
+.block-for-options:nth-child(2) {
+    background: #343434;
+}
+.block-for-options:nth-child(3) {
+    background-color: #5770A9;
+}
+.block-for-options p{
+    margin: .5em;
+}
+.block-for-options span{
+    color: #bec6d0;
+}
