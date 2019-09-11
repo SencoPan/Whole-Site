@@ -31,15 +31,18 @@ body
             .option-span
                 span or
             .other-option
-                .block-for-options
-                    p register with &nbsp;
-                        span g+
-                .block-for-options
-                    p register with &nbsp;
-                        span GitHub
-                .block-for-options
-                    p register with &nbsp;
-                        span habr
+                a(href="/auth/google")
+                    .block-for-options
+                        p register with &nbsp;
+                            span g+
+                a(href="/auth/git")
+                    .block-for-options
+                        p register with &nbsp;
+                            span GitHub
+                a(href="/auth/")
+                    .block-for-options
+                        p register with &nbsp;
+                            span habr
             .addBlock
                 a(href="/") Main Page
                 a(href='/reg') Register

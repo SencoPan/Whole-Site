@@ -34,13 +34,16 @@
     align-items: center;
     border: .5px solid black;
 }
-.block-for-options:nth-child(1){
+.other-option a{
+    outline: none;
+}
+a:nth-child(1) .block-for-options{
     background: #a5342b;
 }
-.block-for-options:nth-child(2) {
+a:nth-child(2) .block-for-options{
     background: #343434;
 }
-.block-for-options:nth-child(3) {
+a:nth-child(3) .block-for-options{
     background-color: #5770A9;
 }
 .block-for-options p{

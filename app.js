@@ -5,8 +5,11 @@ const   createError = require('http-errors'),
         bodyParser = require('body-parser')
         logger = require('morgan'),
         request = require("request"),
-        authRouters = require("./routes/login.js")
-        sassMiddleware = require('node-sass-middleware');
+        authRouters = require("./routes/login.js"),
+        sassMiddleware = require('node-sass-middleware'),
+        passportSetup = require('./config/passport-setup');
+
+
 //const multer = require('multer');
 //const format = require('node.date-time');
 
