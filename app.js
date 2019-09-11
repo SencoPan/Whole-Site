@@ -14,7 +14,7 @@ const   createError = require('http-errors'),
 
 let ObjectID = require('mongodb').ObjectID;
 
-let db = require("./db");
+let db = require("./config/db");
 const User = db.User;
 
 //let indexRouter = require('./routes/index');
