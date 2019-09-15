@@ -1,0 +1,73 @@
+$wise-width: 15em
+$wise-height: 2.5em
+$wise-capital-font-size: 25px
+$wise-basic-font-size: 20px
+$right-margin: 1em
+$right-padding: .5em
+$wise-square-icon: 1.8em
+
+.other-option
+  display: inline-flex
+  text-align: center
+  padding: 2%
+  margin-top: 1em
+  flex-direction: column
+  height: auto
+  width: 420px
+  background-color: white
+  align-content: center
+  justify-content: center
+  a
+    outline: none
+    text-decoration: unset
+  .block-for-options
+    width: $wise-width
+    height: $wise-height
+    display: flex
+    margin: .5em auto .5em auto
+    font-size: $wise-basic-font-size
+    align-self: center
+    color: white
+    border: .5px solid black
+    align-content: center
+    justify-content: space-around
+    text-align: center
+    padding: 0 $right-padding 0 $right-padding
+    p
+      margin-top: auto
+      margin-bottom: auto
+      align-self: center
+      text-align: left
+      padding-left: 1em
+      width: 100%
+
+    i
+      font-size: $wise-square-icon
+      float: right
+
+
+
+.option-span
+  display: inline-flex
+  text-align: center
+  margin-top: 1em
+  flex-direction: column
+  width: 420px
+  background-color: white
+  align-content: center
+  justify-content: center
+  height: 4em
+  padding: .1em
+  align-items: center
+  span
+    margin: 0
+    font-size: $wise-basic-font-size
+
+a
+  &:nth-child(1) .block-for-options
+    background: rgb(221, 75, 57)
+  &:nth-child(2) .block-for-options
+    background: #343434
+  &:nth-child(3) .block-for-options
+    background-color: #3b5998
+  text-decoration: none !important

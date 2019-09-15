@@ -9,12 +9,12 @@ button#dropdownMenuButton{
 	font-size: 25px;
 	width: 180px;
 	color: #fff;
-	background: #5159d0;
+	background: #35419d;
 	text-align: left;
 }
 
 button#dropdownMenuButton:active, button#dropdownMenuButton:hover{
-	background: #35419d;
+	background: #28389d;
 	color: #eee;
 }
 
@@ -100,7 +100,7 @@ button#dropdownMenuButton:active, button#dropdownMenuButton:hover{
 	border-right: 2px solid #969eff; */
 }
 .row .col-5 ul.content-buttons li a:active, .row .col-5 ul.content-buttons li a.right-now-in{
-	background: #7181ff;
+	background: #35419d;
 	box-shadow: 0 0 0 #000, 1px 1px 1px #3333f6, 0 0 0 #000, 0 0 0 #000;
 	color: #fff;
 	border: none;

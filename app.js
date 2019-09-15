@@ -138,6 +138,10 @@ app.post('/reg', (req, res)=>{
     })
 })
 
+app.get("/sass", (req, res) => {
+    res.render('test', {title:"fac"});
+});
+
 app.get('/reg', (req, res) => {
     res.render("registration");
 });
