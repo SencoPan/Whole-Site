@@ -4,11 +4,14 @@ const   createError = require('http-errors'),
         cookieParser = require('cookie-parser'),
         bodyParser = require('body-parser')
         logger = require('morgan'),
-        request = require("request"),
-        authRouters = require("./routes/login.js"),
+        request = require('request'),
+        authRouters = require('./routes/login.js'),
+        profileRouters = require('./routes/profile.js'),
         sassMiddleware = require('node-sass-middleware'),
-        passportSetup = require('./config/passport-setup');
-
+        passportSetup = require('./config/passport-setup'),
+        passport = require('passport'),
+        secretKeys = require('./config/keys'),
+        cookieSession = require('cookie-session');
 
 //const multer = require('multer');
 //const format = require('node.date-time');
@@ -35,10 +38,9 @@ db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
   if(err){
     return console.log(err);
   }
-  db = state;
+    db = state;
+
 });
-
-
 
 // view engine setup
 app.set('view engine', 'pug');
@@ -53,12 +55,24 @@ app.use(sassMiddleware({
     prefix: '/stylesheets'
 }));
 
+app.use(cookieSession(
+    {
+        maxAge: 24 * 60 * 60 * 1000,
+        keys: [secretKeys.session.cookieKey]
+    }
+));
+
+app.use(passport.initialize());
+app.use(passport.session())
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/auth', authRouters)
+app.use('/profile', profileRouters)
 
 app.use(bodyParser.json())
 
@@ -212,5 +226,4 @@ app.use(function(err, req, res) {
 });
 
 module.exports = app;
-
 db.getAllData();

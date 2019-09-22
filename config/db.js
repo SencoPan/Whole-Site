@@ -1,8 +1,12 @@
 let mongoClient = require("mongodb").MongoClient;
-
 let mongoose = require("mongoose")
 
 let Schema = mongoose.Schema;
+
+let googleUserSchema = new Schema({
+    username : { type : String, unique: false },
+    googleid : { type : String, unique: true  }
+});
 
 let userSchema = new Schema({
     login       : { type: String, unique: true },
@@ -11,7 +15,10 @@ let userSchema = new Schema({
     firstName   : String,
     secondName  : String
 })
+
 let User = mongoose.model("Users", userSchema);
+let UserGoogle = mongoose.model("UsersGoogle", googleUserSchema);
+
 mongoose.set('useCreateIndex', true);
 
 let state = {
@@ -38,14 +45,17 @@ const chech = function(number){
             console.log(err);
             return res.sendStatus(500);
         }
-        if (number == undefined) {
+        if (number === undefined) {
             return console.log(docs)
         } else {
             return console.log(docs[number])
         }
     })
 }
+
 module.exports.User = User;
+module.exports.UserGoogle = UserGoogle;
+
 module.exports.getAllData = (number) =>{
     setTimeout(() => (chech(number)), 5000)
 }
