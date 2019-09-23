@@ -1,49 +1,81 @@
 extends mainLayout
+block loginPanel
+    .logsButtons
+        a(href="/auth/login")
+            button.btnNav Log in
+        a(href='/reg')
+            button.btnNav Sign up
+
 block content
-    .dropdown
-        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-            | Горя́чее
-        .dropdown-menu(aria-labelledby='dropdownMenuButton')
-            a.dropdown-item(href='#') Киберпанк
-            a.dropdown-item(href='#') Программирование
-            a.dropdown-item(href='#') Игровой паб
-    hr
-    .row.to-hide-content
-        .col-5.to-hide-content
-            ul.content-buttons
-                li.content-button
-                    a.right-now-in(href='#') Сегодня
-                li.content-button
-                    a.not-in(href='#') Вчера
-                li.content-button
-                    a.not-in(href='#') Неделя
-                li.content-button
-                    a.not-in(href='#') Месяц
-    .col-12.content-blog-start
-        .col-12.UserProfile
-            img.UserIcon(src='images/testIco.png' alt='icon')
-            p.nameOfUser UserName
-            // After date
-            - let name = "Cappish?"
-        h4.nameOfPost #{name}
-        .tagsOfPost
-            a(href='#') #Programming
-            a(href='#') #Adminstarion
-        .col-12
-            img.ImgOfPost(src='images/exp.jpg' alt='postImg')
-        .col-12.InfoNInteractive
-            // Comments/Marks/PullforVote/descrip <
-            .col-12.description
-                p.desSec TestEast
-            .col.yeah
-                .commentsNpull
-                    a.comments(href='#')
-                        | 255
-                        i.far.fa-comment-alt
-                .col-2.votePull
-                    .col-3
-                    .col-3
-                        i.fas.fa-angle-up
-                    .col-3.mark 69
-                    .col-3
-                        i.fas.fa-angle-down
+    .col.col-9
+        .dropdown
+            button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                | Горя́чее
+            .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                a.dropdown-item(href='#') Киберпанк
+                a.dropdown-item(href='#') Программирование
+                a.dropdown-item(href='#') Игровой паб
+        hr
+        .row.to-hide-content
+            .col-5.to-hide-content
+                ul.content-buttons
+                    li.content-button
+                        a.right-now-in(href='#') Сегодня
+                    li.content-button
+                        a.not-in(href='#') Вчера
+                    li.content-button
+                        a.not-in(href='#') Неделя
+                    li.content-button
+                        a.not-in(href='#') Месяц
+        .col-12.content-blog-start
+            .col-12.UserProfile
+                img.UserIcon(src='images/testIco.png' alt='icon')
+                p.nameOfUser UserName
+                // After date
+                - let name = "Cappish?"
+            h4.nameOfPost #{name}
+            .tagsOfPost
+                a(href='#') #Programming
+                a(href='#') #Adminstarion
+            .col-12
+                img.ImgOfPost(src='images/exp.jpg' alt='postImg')
+            .col-12.InfoNInteractive
+                // Comments/Marks/PullforVote/descrip <
+                .col-12.description
+                    p.desSec TestEast
+                .col.yeah
+                    .commentsNpull
+                        a.comments(href='#')
+                            | 255
+                            i.far.fa-comment-alt
+                    .col-2.votePull
+                        .col-3
+                        .col-3
+                            i.fas.fa-angle-up
+                        .col-3.mark 69
+                        .col-3
+                            i.fas.fa-angle-down
+    .col.col-3
+        .block
+            a(href='#')
+                img(src='https://cs8.pikabu.ru/post_img/2017/08/06/7/1502019934151881439.jpg' alt='adv')
+            a.adv(href='#') &Rcy;&iecy;&kcy;&lcy;&acy;&mcy;&acy;
+        ul.list-group
+            li.list-group-item.active &Rcy;&acy;&zcy;&dcy;&iecy;&lcy;&ycy;
+            li.list-group-item Jasper Kyd
+            li.list-group-item Michael McCann
+            li.list-group-item lipsum3
+            li.list-group-item lipsum3
+            // li.list-group-item{JJJJJ $}*40
+        ul.second-list.list-group
+            li.second.list-group-item.active Popular
+            li.second.list-group-item PostNameViewsandComments
+            li.second.list-group-item PostNameViewsandComments
+            li.second.list-group-item PostNameViewsandComments
+            li.second.list-group-item PostNameViewsandComments
+            li.second.list-group-item PostNameViewsandComments
+            li.second.list-group-item PostNameViewsandComments
+            li.second.list-group-item PostNameViewsandComments
+            li.second.list-group-item PostNameViewsandComments
+            li.second.list-group-item PostNameViewsandComments
+            li.second.list-group-item PostNameViewsandComments

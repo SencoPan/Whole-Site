@@ -1,0 +1,7 @@
+extends mainLayout
+block loginPanel
+    a(href="auth/logout" )
+        button(style={ color:'white', height: '3.2em', whiteSpace: "normal !important" }) Log out
+block content
+    .col.col-12
+        h1 logged in as #{checkForUser}

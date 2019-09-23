@@ -108,7 +108,7 @@ div.logsButtons{
 	margin-top: .1em;
 	margin-bottom: .1em;
 }
-.nav.logs1 button, input[value="Log in"]{
+.nav.logs1 button{
 	align-items: center;
 	background:#5159d0;
 	display: flex;
@@ -119,9 +119,17 @@ div.logsButtons{
 	width: 4em;
 	border: 1px solid white;	
 	border-radius: 2px;
+	white-space: nowrap;
+	color:white;
 }
-.nav.logs1 input[value="Log in"]{
-	background: #ff5500;
+
+.nav.logs1 a{
+	text-decoration: none;
+	outline: none;
+}
+
+.nav.logs1 a:nth-child(1) button{
+	background: #fa7a3a;
 	text-decoration: none;
 	font-size: 1em;
 	white-space: nowrap;
@@ -170,9 +178,9 @@ div.search.language  form div div:last-child{
 	border:none;
 }
 div.search.language  form input#search-anm-1{
-	border-left: 5px outset #f50;
-	border-top: 2px inset #f50;
-	border-bottom: 2px inset #f50;
+	border-left: 5px outset #fa7a3a;
+	border-top: 2px inset #fa7a3a;
+	border-bottom: 2px inset #fa7a3a;
 	padding:0;
 	justify-content: flex-end;
 }
@@ -185,9 +193,9 @@ div.search.language  form div div:last-child{
 	background: white;
 	width: 4em;
 	height: 1.4em;
-	border-left: 5px outset #f50;
-	border-top: 2px inset #f50;
-	border-bottom: 2px inset #f50;
+	border-left: 5px outset #fa7a3a;
+	border-top: 2px inset #fa7a3a;
+	border-bottom: 2px inset #fa7a3a;
 	justify-content: space-around;
 	align-items: center;
 	float: right;
@@ -206,7 +214,7 @@ div.search.language  form div div:last-child a{
 	display: none;
 }
 div.search.language i.search-ci{
-	color: #E2E1D9;
+	color: white;
 	cursor: pointer;
 	display: flex;
 	flex-direction: column;
@@ -215,7 +223,7 @@ div.search.language i.search-ci{
 	text-align: center;
 	width: 1.4em;
 	font-size: 1em;
-	background: #f50;
+	background: #fa7a3a;
 }
 div.search.language i.search-ci:hover{
 	color: #B9B5AD;

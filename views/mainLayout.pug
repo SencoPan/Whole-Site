@@ -59,43 +59,11 @@ head
                             .icons-anm
                                 i#search-anm-i-1.fas.fa-search.search-ci
                                 i#search-anm-i-2.fas.fa-globe.search-ci
-                    form.logs(action='/login' method="post")
-                        .logsForms
-                            input(type='text' name='login')
-                            input(type='password' name="password")
-                        .logsButtons
-                            input(type='submit' value="Log in").btnNav
-                            button.btnNav
-                                a(href='/reg') Sign up
+                    block loginPanel
 #main_section_content.col.content
     .container
         #hei.row
-            .col.col-9
-                block content
-            .col.col-3
-                .block
-                    a(href='#')
-                        img(src='https://cs8.pikabu.ru/post_img/2017/08/06/7/1502019934151881439.jpg' alt='adv')
-                    a.adv(href='#') &Rcy;&iecy;&kcy;&lcy;&acy;&mcy;&acy;
-                ul.list-group
-                    li.list-group-item.active &Rcy;&acy;&zcy;&dcy;&iecy;&lcy;&ycy;
-                    li.list-group-item Jasper Kyd
-                    li.list-group-item Michael McCann
-                    li.list-group-item lipsum3
-                    li.list-group-item lipsum3
-                    // li.list-group-item{JJJJJ $}*40
-                ul.second-list.list-group
-                    li.second.list-group-item.active Popular
-                    li.second.list-group-item PostNameViewsandComments
-                    li.second.list-group-item PostNameViewsandComments
-                    li.second.list-group-item PostNameViewsandComments
-                    li.second.list-group-item PostNameViewsandComments
-                    li.second.list-group-item PostNameViewsandComments
-                    li.second.list-group-item PostNameViewsandComments
-                    li.second.list-group-item PostNameViewsandComments
-                    li.second.list-group-item PostNameViewsandComments
-                    li.second.list-group-item PostNameViewsandComments
-                    li.second.list-group-item PostNameViewsandComments
+            block content
         // (.row>col-12>p{$}*20)*20
 footer.page-footer
     .footer-copyright.text-center.py-3
