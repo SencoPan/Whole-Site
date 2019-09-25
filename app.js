@@ -161,7 +161,7 @@ app.get('/reg', (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("mainPost");
+  res.render("mainPost", { user : req.user });
 });
 
 app.get("/check", (req, res) => {

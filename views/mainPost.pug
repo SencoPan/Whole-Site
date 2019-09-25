@@ -1,13 +1,26 @@
 extends mainLayout
+block title
+    title News
 block loginPanel
-    .logsButtons
-        a(href="/auth/login")
-            button.btnNav Log in
-        a(href='/reg')
-            button.btnNav Sign up
+    - if( !user )
+        .logsButtons
+            a(href="/auth/login")
+                button.btnNav Log in
+            a(href='/reg')
+                button.btnNav Sign up
+    - else
+        .logsButtons
+            a(href="profile")
+                button.btnNav Profile
+            a(href="auth/logout")
+                button.btnNav Log out
+
 
 block content
     .col.col-9
+        .text
+            p ЛУЧШЕЕ ЗА НЕДЕЛЮ
+        hr
         .dropdown
             button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                 | Горя́чее
@@ -15,7 +28,6 @@ block content
                 a.dropdown-item(href='#') Киберпанк
                 a.dropdown-item(href='#') Программирование
                 a.dropdown-item(href='#') Игровой паб
-        hr
         .row.to-hide-content
             .col-5.to-hide-content
                 ul.content-buttons

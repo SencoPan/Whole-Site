@@ -1,16 +1,13 @@
-var print = args => console.log(...args);
-print("hi there");
-var footerToHide = $(".page-footer");
-var temp = $(".to-hide-content");
-const InputToSeaz = $("#search-anm-1");
-const IconToActWith = $("#search-anm-i-1");
-const ChoiceLanToSeaz = $('div#choice-lan');
-const IconToActLan = $("#search-anm-i-2");
-const ChoiceAwIthinDiv = $("div#choice-lan").find(".lan-links");
-const temp1 = {
-	zero1:0,
-	zero2:0
-};
+const print = args => console.log(...args),
+	  InputToSeaz = $("#search-anm-1"),
+	  IconToActWith = $("#search-anm-i-1"),
+	  ChoiceLanToSeaz = $('div#choice-lan'),
+	  IconToActLan = $("#search-anm-i-2"),
+	  ChoiceAwIthinDiv = $("div#choice-lan").find(".lan-links"),
+	  temp1 = {
+		 zero1:0,
+		 zero2:0
+	  };
 console.log(parseInt(ChoiceAwIthinDiv.css("padding-top")))
 console.log(parseInt(InputToSeaz.css("padding-top")));
 

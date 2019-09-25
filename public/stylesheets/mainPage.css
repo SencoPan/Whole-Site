@@ -115,3 +115,16 @@ button#dropdownMenuButton:active, button#dropdownMenuButton:hover{
 	min-width: 87px;
 	margin-right: 2%;
 }
+.text{
+	display: flex;
+	height: 80px;
+}
+.text p{
+	border: 1px groove #7181ff;
+	padding: .3em;
+	margin-top: auto;
+	margin-bottom: .4em;
+	font-size: 24px;
+	color: #3367d5;
+	font-family: Verdana;
+}

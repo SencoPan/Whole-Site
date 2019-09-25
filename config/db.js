@@ -5,7 +5,8 @@ let Schema = mongoose.Schema;
 
 let googleUserSchema = new Schema({
     username : { type : String, unique: false },
-    googleid : { type : String, unique: true  }
+    googleid : { type : String, unique: true  },
+    imageURL : { type : String, unique: false },
 });
 
 let userSchema = new Schema({
