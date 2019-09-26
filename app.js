@@ -167,7 +167,9 @@ app.get("/", (req, res) => {
 app.get("/check", (req, res) => {
         res.render("mainLayout")
 });
-
+app.get("/react", (req, res) => {
+    res.sendfile(__dirname + "/client/public/index.html");
+})
 app.get('/test', (req, res) => {
     res.sendFile(__dirname + "/htmlTest.html")
 });
