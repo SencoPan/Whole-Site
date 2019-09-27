@@ -116,7 +116,7 @@ app.post('/reg', (req, res)=>{
     }
 
     //secret Key
-    const secretKey = '6LeKZrIUAAAAAFj3rdySMCcoUcHZU0z85dUWZaXV';
+    const secretKey = keys.captcha.secretKey;
 
     //vefiry URL
     const vrfUrl = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddres}`;
@@ -207,7 +207,7 @@ app.get("/test/:id", (req, res)=>{
             return res.sendStatus(500);
           }
           console.log(docs);
-          res.render("home-page.js", {testText: docs.name + ' ' + docs.content})
+          res.render("home-page", {testText: docs.name + ' ' + docs.content})
         })})
 })
 
