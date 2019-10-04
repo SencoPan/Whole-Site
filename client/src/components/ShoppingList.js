@@ -16,12 +16,14 @@ class ShoppingList extends Component {
     render() {
         const { items } = this.state;
         return(
-            <Container>
+            <Container
+                style={{position:"relative"}}
+            >
                 <Button
                     color="dark"
                     style={{ display:"flex", marginBottom:"2em", marginTop:"2em", marginRight:"auto" }}
                     onClick={()=> {
-                        const name = prompt("Enter Item");
+                        const name = prompt("Введите товар");
                         if(name){
                             this.setState(state => ({
                                 items: [...state.items, { id: uuid(), name }]

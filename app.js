@@ -86,6 +86,8 @@ app.use(bodyParser.json())
 
 app.post("/login", (req, res) =>{
 
+
+
     let username = req.body.login;
     let password = req.body.password;
 
@@ -165,7 +167,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/check", (req, res) => {
-        res.render("mainLayout")
+    res.render("mainLayout")
 });
 app.get("/react", (req, res) => {
     res.sendfile(__dirname + "/client/public/index.html");
