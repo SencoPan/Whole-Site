@@ -10,7 +10,6 @@ db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
         return console.log(err);
     }
     db = state;
-
 });
 
 passport.serializeUser((user, done) => {

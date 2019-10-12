@@ -9,6 +9,10 @@ let googleUserSchema = new Schema({
     imageURL : { type : String, unique: false },
 });
 
+let itemModel = new Schema({
+    name: {type : String, unique: false}
+});
+
 let userSchema = new Schema({
     login       : { type: String, unique: true },
     email       : { type: String, unique: true },
@@ -18,6 +22,7 @@ let userSchema = new Schema({
 })
 
 let User = mongoose.model("Users", userSchema);
+let ItemModel = mongoose.model("items", itemModel);
 let UserGoogle = mongoose.model("UsersGoogle", googleUserSchema);
 
 mongoose.set('useCreateIndex', true);
@@ -56,6 +61,7 @@ const chech = function(number){
 
 module.exports.User = User;
 module.exports.UserGoogle = UserGoogle;
+module.exports.ItemModel = ItemModel;
 
 module.exports.getAllData = (number) =>{
     setTimeout(() => (chech(number)), 5000)

@@ -6,6 +6,7 @@ const   createError = require('http-errors'),
         logger = require('morgan'),
         request = require('request'),
         authRouters = require('./routes/login.js'),
+        shopReactRouters = require('./config/api/items'),
         profileRouters = require('./routes/profile.js'),
         sassMiddleware = require('node-sass-middleware'),
         passportSetup = require('./config/passport-setup'),
@@ -71,8 +72,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/auth', authRouters)
-app.use('/profile', profileRouters)
+app.use('/auth', authRouters);
+app.use('/profile', profileRouters);
+app.use('/react', shopReactRouters);
 
 app.use(bodyParser.json())
 
