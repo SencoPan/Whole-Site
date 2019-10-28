@@ -6,7 +6,6 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
-    console.log(action.payload);
     switch (action.type) {
         case GET_ITEMS:
             return {
@@ -18,12 +17,14 @@ export default function (state = initialState, action) {
         case DELETE_ITEMS:
             return {
                 ...state,
-                items: state.items.filter(item => item.id !== action.payload)
+                id: action.payload.id,
+                loading: false
             };
         case ADD_ITEMS:
             return {
                 ...state,
-                items: [action.payload, ...state.items]
+                items: [action.payload, ...state.items],
+                loading: false
             }
         case ITEMS_LOADING:
             return {
