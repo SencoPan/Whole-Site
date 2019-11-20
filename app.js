@@ -24,6 +24,7 @@ let ObjectID = require('mongodb').ObjectID;
 
 let db = require("./config/db");
 const User = db.User;
+const Posts = db.PostSchema;
 
 //let indexRouter = require('./routes/index');
 //let usersRouter = require('./routes/users');
@@ -165,7 +166,11 @@ app.get('/reg', (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("mainPost", { user : req.user });
+    let data = Posts.find((err, data) => {
+        if (err) return console.error(err);
+        console.log(data);
+        res.render("mainPost", {user: req.user, posts: data});
+    })
 });
 
 app.get("/check", (req, res) => {

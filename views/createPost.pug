@@ -19,8 +19,10 @@ block loginPanel
 
 
 block content
-   - if( false )
-        h1 You shall need to authorize to make new posts!
+   - if( !user )
+        .container
+            .locked.col-sm-12.regBlock
+                h1 You shall need to authorise to make new posts!
    - else
         .container
             .col-sm-12.regBlock

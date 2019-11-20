@@ -6,7 +6,7 @@
 
 #main_section_content .list-group li{
 	border-radius: 0px;
-	background: #f5f5f5; 
+	background: #fff;
 }
 
 #main_section_content .list-group li.active{

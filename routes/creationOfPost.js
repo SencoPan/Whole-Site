@@ -16,7 +16,7 @@ const authCheck = (req, res, next) => {
 }
 
 
-router.get("/", (req, res)  => {
+router.get("/", authCheck, (req, res)  => {
     res.render("createPost", { user : req.user });
 });
 
@@ -27,13 +27,15 @@ router.post("/", (req, res) => {
         photos = req.body.photos,
         description = req.body.description;
 
+    photos ? photos = "../images/exp.jpg" : photos;
+    
     new NewPost({
         title: title,
         tags: tags,
         photos: photos,
         createAt: new Date(),
         description: description,
-        user: req.user.login
+        user: req.user.username
     }).save((err) => {
     if(err){
         console.log(err);

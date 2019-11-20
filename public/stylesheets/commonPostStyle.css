@@ -21,13 +21,13 @@
 .UserIcon{
     max-height: 1.5em;
 }
-.nameOfUser::after{
-    content: "Tonight in 7:32";
-    font-size: 14px;
+p.nameOfUser + span{
+    font-size: 12px;
     color: grey;
     text-transform: lowercase;
     font-family: monospace;
     margin-left: 5px;
+    text-align: end;
 }
 .ImgOfPost{
     max-width:100%;

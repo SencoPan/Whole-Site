@@ -24,6 +24,9 @@ $("input[type='submit']").on("click", (event) => {
         description = $("textarea[name='descOfPost']").val(),
         photo = image.src;
 
+    if(!(title && tags && description)){
+        return false;
+    }else {
         $.ajax({
             url: "/CreatePost",
             type: "POST",
@@ -36,7 +39,7 @@ $("input[type='submit']").on("click", (event) => {
             }),
             contentType: "application/json",
             cache: false,
-            complete: function() {
+            complete: function () {
                 console.log('process complete');
                 document.location.href = "http://localhost:3000/"
             },
@@ -44,7 +47,7 @@ $("input[type='submit']").on("click", (event) => {
                 console.log("error has occurred");
             }
         });
-
+    }
 });
 
 

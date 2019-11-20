@@ -39,34 +39,37 @@ block content
                         a.not-in(href='#') Неделя
                     li.content-button
                         a.not-in(href='#') Месяц
-        .col-12.content-blog-start
-            .col-12.UserProfile
-                img.UserIcon(src='images/testIco.png' alt='icon')
-                p.nameOfUser UserName
-                // After date
-                - let name = "Cappish?"
-            h4.nameOfPost #{name}
-            .tagsOfPost
-                a(href='#') #Programming
-                a(href='#') #Adminstarion
-            .col-12
-                img.ImgOfPost(src='images/exp.jpg' alt='postImg')
-            .col-12.InfoNInteractive
-                // Comments/Marks/PullforVote/descrip <
-                .col-12.description
-                    p.desSec TestEast
-                .col.yeah
-                    .commentsNpull
-                        a.comments(href='#')
-                            | 255
-                            i.far.fa-comment-alt
-                    .col-2.votePull
-                        .col-3
-                        .col-3
-                            i.fas.fa-angle-up
-                        .col-3.mark 69
-                        .col-3
-                            i.fas.fa-angle-down
+        each val in posts
+            .col-12.content-blog-start
+                .col-12.UserProfile
+                    img.UserIcon(src='images/testIco.png' alt='icon')
+                    p.nameOfUser #{val.user}
+                    span #{val.createAt.toLocaleDateString("en-US")}
+                    // After date
+                    - let name = val.title
+                h4.nameOfPost #{name}
+                .tagsOfPost
+                    each tag in val.tags.split(" ")
+                        a(href='#') #{tag}
+                .col-12
+                    img.ImgOfPost(src=`${val.photos}` alt='postImg')
+                .col-12.InfoNInteractive
+                    .col-12.description
+                        p.desSec #{val.description}
+                    .col.yeah
+                        .commentsNpull
+                            a.comments(href='#')
+                                | 0
+                                i.far.fa-comment-alt
+                        .col-2.votePull
+                            .col-3
+                            .col-3
+                                i.fas.fa-angle-up
+                            .col-3.mark
+                                |
+                                | 0
+                            .col-3
+                                i.fas.fa-angle-down
     .col.col-3
         .block
             a(href='#')
