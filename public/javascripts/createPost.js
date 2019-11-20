@@ -1,8 +1,6 @@
 let image = $(".col-sm-12 img");
 let input = $("input[name='photosOfPost']");
 
-let formData = new FormData();
-
 image.on("click", (event) =>{
     input.trigger("click");
 });
@@ -18,6 +16,36 @@ input.on("change", (event) => {
     reader.readAsDataURL(selectedFile);
 });
 
+$("input[type='submit']").on("click", (event) => {
+    event.preventDefault();
+
+    let title = $("input[name='titleOfPost']").val(),
+        tags = $("input[name='tagsOfPost']").val(),
+        description = $("textarea[name='descOfPost']").val(),
+        photo = image.src;
+
+        $.ajax({
+            url: "/CreatePost",
+            type: "POST",
+            dataType: "json",
+            data: JSON.stringify({
+                title: title,
+                tags: tags,
+                description: description,
+                photos: photo
+            }),
+            contentType: "application/json",
+            cache: false,
+            complete: function() {
+                console.log('process complete');
+                document.location.href = "http://localhost:3000/"
+            },
+            error: () => {
+                console.log("error has occurred");
+            }
+        });
+
+});
 
 
 

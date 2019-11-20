@@ -24,7 +24,7 @@ block content
    - else
         .container
             .col-sm-12.regBlock
-                form(method="post" class="registration disabled probPass" action='/')
+                form(method="post" class="registration disabled probPass" action='/CreatePost')
                     h1 Create your new post!
 
                     label Title
@@ -46,6 +46,6 @@ block content
                         description
                         And all.
 
-                    input(type='submit' value='Create New Post' class="active")
+                    input(type='submit' value='Create New Post' class="active" id="123")
 block additionalScripts
     script(src='javascripts/createPost.js')

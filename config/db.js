@@ -21,9 +21,19 @@ let userSchema = new Schema({
     secondName  : String
 })
 
+let postSchema = new Schema({
+    title       : { type: String, unique: true },
+    tags        : String,
+    photos      : String,
+    description : String,
+    createAt    : Date,
+    user        : String
+})
+
 let User = mongoose.model("Users", userSchema);
 let ItemModel = mongoose.model("items", itemModel);
 let UserGoogle = mongoose.model("UsersGoogle", googleUserSchema);
+let PostSchema = mongoose.model("PostSchema", postSchema);
 
 mongoose.set('useCreateIndex', true);
 
@@ -62,6 +72,7 @@ const chech = function(number){
 module.exports.User = User;
 module.exports.UserGoogle = UserGoogle;
 module.exports.ItemModel = ItemModel;
+module.exports.PostSchema = PostSchema;
 
 module.exports.getAllData = (number) =>{
     setTimeout(() => (chech(number)), 5000)
