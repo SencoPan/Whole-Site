@@ -1,0 +1,51 @@
+extends mainLayout
+block title
+    title createPost
+block moduleStylesheets
+    link(rel='stylesheet' type='text/css' href='stylesheets/createPost.css')
+block loginPanel
+    - if( !user )
+        .logsButtons
+            a(href="/auth/login")
+                button.btnNav Log in
+            a(href='/reg')
+                button.btnNav Sign up
+    - else
+        .logsButtons
+            a(href="profile")
+                button.btnNav Profile
+            a(href="auth/logout")
+                button.btnNav Log out
+
+
+block content
+   - if( false )
+        h1 You shall need to authorize to make new posts!
+   - else
+        .container
+            .col-sm-12.regBlock
+                form(method="post" class="registration disabled probPass" action='/')
+                    h1 Create your new post!
+
+                    label Title
+                    input(type="text" name="titleOfPost")
+
+                    label Tags
+                    input(type="text" name="tagsOfPost")
+
+                    label Photo
+                    input(type="file"  name="photosOfPost")
+                    img(src="" alt="Choose your photo")
+
+                    label Description
+                    textarea(name="descOfPost")
+
+                    // title
+                        tags
+                        photos
+                        description
+                        And all.
+
+                    input(type='submit' value='Create New Post' class="active")
+block additionalScripts
+    script(src='javascripts/createPost.js')

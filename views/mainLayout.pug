@@ -2,6 +2,7 @@ doctype html
 head
     block title
     meta(charset='UTF-8')
+    block moduleStylesheets
     link(rel='stylesheet' type='text/css' href='stylesheets/sideSection.css')
     link(rel='stylesheet' type='text/css' href='stylesheets/mainSection.css')
     link(rel='stylesheet' type='text/css' href='stylesheets/commonPostStyle.css')
@@ -29,26 +30,20 @@ head
                     img.logoOfSite(src='images/Burn.jpg' alt='icon')
             .col.col-11.check
                 .customNav
-                    a.navpart(href='/check')
-                        div
-                            p home
-                    a.navpart(href='#')
+                    a.navpart(href='/')
                         div
                             p news
-                    a.navpart(href='#')
+                    a.navpart(href='/publication')
                         div
                             p publication
-                    a.navpart(href='#')
+                    a.navpart(href='/forum')
                         div
                             p forum
-                    a.navpart(href='#')
+                    a.navpart(href='/CreatePost')
                         div
                             p sandbox
                 .nav.logs1
                     .search.language
-                        //
-                          <img class="search-ci" src="images/sear.png">
-                          <img class="search-ci" src="images/lan.png">
                         form.searchAn(action='#')
                             .input-anm
                                 .inputPlace
@@ -74,3 +69,4 @@ script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js')
 script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
 script(src='javascripts/JS.js')
+block additionalScripts

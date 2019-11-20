@@ -1,5 +1,5 @@
 const   passport = require("passport"),
-        GoogleStategy = require("passport-google-oauth20"),
+        GoogleStrategy = require("passport-google-oauth20"),
         secretKeys = require("./keys");
 
 let db = require("./db"),
@@ -23,7 +23,7 @@ passport.deserializeUser((id, done) => {
 })
 
 passport.use(
-    new GoogleStategy({
+    new GoogleStrategy({
         //options
         callbackURL: "/auth/google/redirect",
         clientID: secretKeys.google.clientID,

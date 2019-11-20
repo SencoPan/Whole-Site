@@ -2,17 +2,18 @@ const   createError = require('http-errors'),
         express = require('express'),
         path = require('path'),
         cookieParser = require('cookie-parser'),
-        bodyParser = require('body-parser')
+        bodyParser = require('body-parser'),
         logger = require('morgan'),
         request = require('request'),
         authRouters = require('./routes/login.js'),
         shopReactRouters = require('./config/api/items'),
-        profileRouters = require('./routes/profile.js'),
+        profileRouters = require('./routes/profile'),
         sassMiddleware = require('node-sass-middleware'),
         passportSetup = require('./config/passport-setup'),
         passport = require('passport'),
         secretKeys = require('./config/keys'),
-        cookieSession = require('cookie-session');
+        cookieSession = require('cookie-session'),
+        creationOfPost = require("./routes/creationOfPost");
 
 //const multer = require('multer');
 //const format = require('node.date-time');
@@ -37,7 +38,7 @@ let urlencodedParser = bodyParser.urlencoded({ extended : false });
 
 db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
   if(err){
-    return console.log(err);
+      console.log(err);
   }
     db = state;
 
@@ -70,11 +71,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', authRouters);
 app.use('/profile', profileRouters);
-app.use('/react', shopReactRouters);
+app.use('/CreatePost', creationOfPost);
 
 app.use(bodyParser.json())
 
@@ -87,8 +89,6 @@ app.use(bodyParser.json())
 }));*/
 
 app.post("/login", (req, res) =>{
-
-
 
     let username = req.body.login;
     let password = req.body.password;
@@ -171,9 +171,7 @@ app.get("/", (req, res) => {
 app.get("/check", (req, res) => {
     res.render("mainLayout")
 });
-app.get("/react", (req, res) => {
-    res.sendfile(__dirname + "/client/public/index.html");
-})
+
 app.get('/test', (req, res) => {
     res.sendFile(__dirname + "/htmlTest.html")
 });

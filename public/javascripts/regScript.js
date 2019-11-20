@@ -67,14 +67,14 @@ $(".radioUrAgmnt").on("click",(e) => {
 function submitForm(event){
 
     event.preventDefault();
-    const firstName = $("input[name='FirstName']").val()
-    const secondName = $("input[name='SecondName']").val()
-    const email = $("input[name='email']").val()
-    const password = $("input[name='password']").val()
-    const passwordCheck = $("input[name='passwordCheck']").val()
-    const login = $("input[name='login']").val()
-    const captcha = $("#g-recaptcha-response").val()
-    const radioUsrAgmnt = $('input[type="checkbox"]').val()
+    const firstName = $("input[name='FirstName']").val(),
+            secondName = $("input[name='SecondName']").val(),
+            email = $("input[name='email']").val(),
+            password = $("input[name='password']").val(),
+            passwordCheck = $("input[name='passwordCheck']").val(),
+            login = $("input[name='login']").val(),
+            captcha = $("#g-recaptcha-response").val(),
+            radioUsrAgmnt = $('input[type="checkbox"]').val();
 
     console.log(login);
 

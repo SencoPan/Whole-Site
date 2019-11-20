@@ -1,0 +1,48 @@
+.container
+  .col-sm-12
+    font-family: Roboto, Arial, serif
+    color: #717171
+    margin-top: 1.2em
+    margin-bottom: .2em
+    min-height: 1024px
+    display: flex
+    justify-content: center
+    h1
+      margin-bottom: .5em
+      text-align: center
+    form
+      min-width: 40em
+      display: flex
+      flex-direction: column
+      textarea
+        height: 12em
+        border: 1px solid #7181ff
+        margin-bottom: 1em
+        resize: none
+        &:focus
+          border: 2.5px solid #7181ff
+      input:not([type="search"])
+        &[type="file"]
+          display: none
+        &:focus
+          border: 2.5px solid #7181ff
+        border: 1px solid #7181ff
+        margin-bottom: 1em
+        height: 2.5em
+      img
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 27em
+        border: 1px solid #7181ff
+        margin-bottom: 1em
+        cursor: pointer
+        resize: none
+        &:not([src=""])
+          border: none
+
+      input[value="Create New Post"]
+        height: 3em
+        background: #3367d5
+        color: white
+

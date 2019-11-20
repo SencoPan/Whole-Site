@@ -54,7 +54,7 @@ button#dropdownMenuButton:active, button#dropdownMenuButton:hover{
 
 .row .col-5 ul.content-buttons{
 	-moz-user-select: none;
-	background: #f7f7f7;
+	background: #fdfdfd;
 	border-radius: 6px;
 	display: inline-flex;
 	float: left;
@@ -69,8 +69,8 @@ button#dropdownMenuButton:active, button#dropdownMenuButton:hover{
 	justify-content: space-around;
 }
 .row .col-5 ul.content-buttons li{
-	background: #f7f7f7;
-	border:2px solid #f7f7f7;
+	background: #fdfdfd;
+	border:2px solid #fdfdfd;
 	color: #969eff;
 	cursor: pointer;
 	display:inline-block;
