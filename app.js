@@ -15,34 +15,21 @@ const   createError = require('http-errors'),
         cookieSession = require('cookie-session'),
         creationOfPost = require("./routes/creationOfPost");
 
-//const multer = require('multer');
-//const format = require('node.date-time');
+const ObjectID = require('mongodb').ObjectID,
+      db = require("./config/db");
 
-//const session = require("express-session");
-
-let ObjectID = require('mongodb').ObjectID;
-
-let db = require("./config/db");
 const User = db.User;
 const Posts = db.PostSchema;
-
-//let indexRouter = require('./routes/index');
-//let usersRouter = require('./routes/users');
-
 
 let app = express();
 
 let urlencodedParser = bodyParser.urlencoded({ extended : false });
-
-//const ONE_HOUR = 1000 * 60 * 60;
-//const SESS_LIFETIME = ONE_HOUR;
 
 db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
   if(err){
       console.log(err);
   }
     db = state;
-
 });
 
 // view engine setup
@@ -66,46 +53,33 @@ app.use(cookieSession(
 ));
 
 app.use(passport.initialize());
-app.use(passport.session())
+app.use(passport.session());
 
+app.use(cookieParser());
 app.use(logger('dev'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/auth', authRouters);
 app.use('/profile', profileRouters);
 app.use('/CreatePost', creationOfPost);
 
-app.use(bodyParser.json())
-
-/*app.use(session({
-    secret: true,
-    name: "King",
-    proxy: true,
-    resave: true,
-    saveUninitialized: true
-}));*/
+app.use(bodyParser.json());
 
 app.post("/login", (req, res) =>{
-
     let username = req.body.login;
     let password = req.body.password;
-
-    console.log('test', password, username);
 
     db.collection("users").findOne({ login : username, password: password }, (err, user) => {
         if(err){
             console.log(err);
         }
         if(!user){
-            console.log(user);
             return res.sendStatus(404);
         }
         else{
-            console.log('We are sure used this block!');
             res.redirect(307, "/");
         }
     });
@@ -123,7 +97,7 @@ app.post('/reg', (req, res)=>{
     //secret Key
     const secretKey = keys.captcha.secretKey;
 
-    //vefiry URL
+    //verify URL
     const vrfUrl = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddres}`;
 
     //request
@@ -151,14 +125,28 @@ app.post('/reg', (req, res)=>{
                 console.log(err);
                 res.sendStatus(500)
             }
-        })
+        });
 
         return res.json({ "success": true, "msg": "ture" })
     })
-})
+});
 
-app.get("/sass", (req, res) => {
-    res.render('test', {title:"fac"});
+app.post("/", urlencodedParser, (req, res) =>{
+
+    const artist = {
+        name: req.body.Title,
+        content: req.body.content
+    }
+
+    console.log(artist);
+
+    db.collection("artists").insertMany( [artist], ( err, result ) => {
+        if(err) {
+            console.log(err)
+            res.sendStatus(500);
+        }
+    });
+    res.render("mainPost");
 });
 
 app.get('/reg', (req, res) => {
@@ -168,7 +156,6 @@ app.get('/reg', (req, res) => {
 app.get("/", (req, res) => {
     let data = Posts.find((err, data) => {
         if (err) return console.error(err);
-        console.log(data);
         res.render("mainPost", {user: req.user, posts: data});
     })
 });
@@ -180,25 +167,6 @@ app.get("/check", (req, res) => {
 app.get('/test', (req, res) => {
     res.sendFile(__dirname + "/htmlTest.html")
 });
-
-app.post("/", urlencodedParser, (req, res) =>{
-
-  const artist = {
-    name: req.body.Title,
-    content: req.body.content
-  }
-
-  console.log(artist);
-
-  db.collection("artists").insertMany( [artist], ( err, result ) => {
-    if(err) {
-      console.log(err)
-      res.sendStatus(500);
-    }
-  });
-  res.render("mainPost");
-});
-
 
 app.get("/test/:id", (req, res)=>{
   db.collection('artists').updateOne(

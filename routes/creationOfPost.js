@@ -24,11 +24,9 @@ router.post("/", (req, res) => {
 
     let title = req.body.title,
         tags = req.body.tags,
-        photos = req.body.photos,
+        photos = "../images/exp.jpg",
         description = req.body.description;
 
-    photos ? photos = "../images/exp.jpg" : photos;
-    
     new NewPost({
         title: title,
         tags: tags,

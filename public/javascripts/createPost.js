@@ -1,7 +1,7 @@
 let image = $(".col-sm-12 img");
 let input = $("input[name='photosOfPost']");
 
-image.on("click", (event) =>{
+image.on("click", () =>{
     input.trigger("click");
 });
 

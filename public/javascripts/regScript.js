@@ -65,7 +65,6 @@ $(".radioUrAgmnt").on("click",(e) => {
 })
 
 function submitForm(event){
-
     event.preventDefault();
     const firstName = $("input[name='FirstName']").val(),
             secondName = $("input[name='SecondName']").val(),
@@ -110,6 +109,4 @@ function submitForm(event){
             console.log('process error');
         },
     });
-
-
 }
