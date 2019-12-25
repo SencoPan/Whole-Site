@@ -14,13 +14,13 @@ db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
 
 passport.serializeUser((user, done) => {
     done(null, user._id);
-})
+});
 
 passport.deserializeUser((id, done) => {
     NewUserGoogle.findById(id).then( (user) => {
         done(null, user);
     } )
-})
+});
 
 passport.use(
     new GoogleStrategy({
@@ -32,6 +32,7 @@ passport.use(
     (accessToken, refreshToken, profile, done) => {
         console.log("passport callback function");
         console.log(profile);
+
         NewUserGoogle.findOne({googleid : profile.id}).then((currentUser) => {
             if (
                 currentUser === undefined ||
@@ -53,6 +54,8 @@ passport.use(
                 console.log("user exist " + currentUser);
                 done(null, currentUser);
             }
+        }, (err) => {
+            console.log(err);
         })
     })
 );

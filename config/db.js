@@ -1,5 +1,6 @@
-let mongoClient = require("mongodb").MongoClient;
-let mongoose = require("mongoose")
+const mongoClient = require("mongodb").MongoClient,
+    bcrypt = require('bcrypt-nodejs'),
+    mongoose = require("mongoose");
 
 let Schema = mongoose.Schema;
 
@@ -19,7 +20,7 @@ let userSchema = new Schema({
     password    : { type: String },
     firstName   : String,
     secondName  : String
-})
+});
 
 let postSchema = new Schema({
     title       : { type: String, unique: true },
@@ -28,18 +29,27 @@ let postSchema = new Schema({
     description : String,
     createAt    : Date,
     user        : String
-})
+});
 
-let User = mongoose.model("Users", userSchema);
-let ItemModel = mongoose.model("items", itemModel);
-let UserGoogle = mongoose.model("UsersGoogle", googleUserSchema);
-let PostSchema = mongoose.model("PostSchema", postSchema);
+// User hash for passwords
+
+userSchema.methods.encryptPassword = (password) => {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null)
+};
+userSchema.methods.validPassword = (password) => {
+    return bcrypt.compareSync(password, this.password)
+};
+
+let  User = mongoose.model("Users", userSchema),
+     ItemModel = mongoose.model("items", itemModel),
+     UserGoogle = mongoose.model("UsersGoogle", googleUserSchema),
+     PostSchema = mongoose.model("PostSchema", postSchema);
 
 mongoose.set('useCreateIndex', true);
 
 let state = {
     db: null
-}
+};
 
 exports.connect = (url, done) => {
     if(state.db){
@@ -53,7 +63,7 @@ exports.connect = (url, done) => {
         state.db = database.db("nodeExp");
         done(false, state.db);
     });
-}
+};
 
 const chech = function(number){
     state.db.collection('users').find().toArray((err, docs) => {
@@ -67,7 +77,7 @@ const chech = function(number){
             return console.log(docs[number])
         }
     })
-}
+};
 
 module.exports.User = User;
 module.exports.UserGoogle = UserGoogle;
@@ -75,5 +85,5 @@ module.exports.ItemModel = ItemModel;
 module.exports.PostSchema = PostSchema;
 
 module.exports.getAllData = (number) =>{
-    setTimeout(() => (chech(number)), 5000)
-}
+    setTimeout(() => (chech(number)), 3000)
+};

@@ -6,7 +6,7 @@ const   createError = require('http-errors'),
         logger = require('morgan'),
         request = require('request'),
         authRouters = require('./routes/login.js'),
-        shopReactRouters = require('./config/api/items'),
+        registration = require('./routes/registration.js'),
         profileRouters = require('./routes/profile'),
         sassMiddleware = require('node-sass-middleware'),
         passportSetup = require('./config/passport-setup'),
@@ -15,7 +15,7 @@ const   createError = require('http-errors'),
         cookieSession = require('cookie-session'),
         creationOfPost = require("./routes/creationOfPost");
 
-const ObjectID = require('mongodb').ObjectID,
+let ObjectID = require('mongodb').ObjectID,
       db = require("./config/db");
 
 const User = db.User;
@@ -62,11 +62,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/auth', authRouters);
+app.use(bodyParser.json());
+
+//All routes
+app.use('/auth', authRouters, registration);
 app.use('/profile', profileRouters);
 app.use('/CreatePost', creationOfPost);
-
-app.use(bodyParser.json());
 
 app.post("/login", (req, res) =>{
     let username = req.body.login;
@@ -85,51 +86,6 @@ app.post("/login", (req, res) =>{
     });
 });
 
-app.post('/reg', (req, res)=>{
-    if(
-        req.body.captcha === undefined ||
-        req.body.captcha === ''        ||
-        req.body.captcha === null
-    ){
-        return false;
-    }
-
-    //secret Key
-    const secretKey = keys.captcha.secretKey;
-
-    //verify URL
-    const vrfUrl = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddres}`;
-
-    //request
-    request(vrfUrl, (err, response, body) => {
-        body = JSON.parse(body);
-
-        // if not successful
-        if (body.success !== undefined && !body.success) {
-            return false;
-        }
-
-        // If successful
-
-        let dataRes = req.body;
-
-        let newUser = new User();
-        newUser.login = dataRes.login;
-        newUser.email = dataRes.email;
-        newUser.firstName = dataRes.firstName;
-        newUser.secondName= dataRes.secondName;
-        newUser.password = dataRes.password;
-
-        newUser.save((err) => {
-            if(err) {
-                console.log(err);
-                res.sendStatus(500)
-            }
-        });
-
-        return res.json({ "success": true, "msg": "ture" })
-    })
-});
 
 app.post("/", urlencodedParser, (req, res) =>{
 
@@ -149,14 +105,10 @@ app.post("/", urlencodedParser, (req, res) =>{
     res.render("mainPost");
 });
 
-app.get('/reg', (req, res) => {
-    res.render("registration");
-});
-
 app.get("/", (req, res) => {
-    let data = Posts.find((err, data) => {
+    Posts.find((err, data) => {
         if (err) return console.error(err);
-        res.render("mainPost", {user: req.user, posts: data});
+        res.render("mainPost", {user: req.user || req.session.user, posts: data});
     })
 });
 
