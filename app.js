@@ -68,42 +68,7 @@ app.use(bodyParser.json());
 app.use('/auth', authRouters, registration);
 app.use('/profile', profileRouters);
 app.use('/CreatePost', creationOfPost);
-
-app.post("/login", (req, res) =>{
-    let username = req.body.login;
-    let password = req.body.password;
-
-    db.collection("users").findOne({ login : username, password: password }, (err, user) => {
-        if(err){
-            console.log(err);
-        }
-        if(!user){
-            return res.sendStatus(404);
-        }
-        else{
-            res.redirect(307, "/");
-        }
-    });
-});
-
-
-app.post("/", urlencodedParser, (req, res) =>{
-
-    const artist = {
-        name: req.body.Title,
-        content: req.body.content
-    }
-
-    console.log(artist);
-
-    db.collection("artists").insertMany( [artist], ( err, result ) => {
-        if(err) {
-            console.log(err)
-            res.sendStatus(500);
-        }
-    });
-    res.render("mainPost");
-});
+app.use('/', generalRoutes);
 
 app.get("/", (req, res) => {
     Posts.find((err, data) => {
@@ -115,28 +80,6 @@ app.get("/", (req, res) => {
 app.get("/check", (req, res) => {
     res.render("mainLayout")
 });
-
-app.get('/test', (req, res) => {
-    res.sendFile(__dirname + "/htmlTest.html")
-});
-
-app.get("/test/:id", (req, res)=>{
-  db.collection('artists').updateOne(
-      { _id: ObjectID(req.params.id) },
-      { $set : { name: "the name of the lord" } },
-      (err) => {
-        if(err) {
-          console.log(err);
-          return res.sendStatus(500)
-        }
-        db.collection('artists').findOne({_id: ObjectID(req.params.id)}, (err, docs) => {
-          if (err) {console.log(err);
-            return res.sendStatus(500);
-          }
-          console.log(docs);
-          res.render("home-page", {testText: docs.name + ' ' + docs.content})
-        })})
-})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
