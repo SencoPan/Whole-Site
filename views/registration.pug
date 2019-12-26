@@ -1,18 +1,6 @@
-doctype html
-head
-    title Authorization
-    meta(charset='UTF-8')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
-    script(src="https://www.google.com/recaptcha/api.js" async defer)
+extends authLayout
 
-    link(rel='stylesheet' type='text/css' href='../stylesheets/mainStyleUndepended.css')
-    link(rel='stylesheet' type='text/css' href='../stylesheets/regStyle.css')
-
-    link(rel='shortcut icon' href='../images/favicon.ico' type='image/x-icon')
-    link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
-    link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous')
-.container
-    .col-sm-12.regBlock
+block form
       form(method="post" class="registration disabled probPass" action='/auth/reg')
           h1 Registration
           label First Name
@@ -37,7 +25,5 @@ head
         a(href="/") Main Page
         a(href='/auth/login') Login
 
-
-script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js')
-script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
-script(src='../javascripts/regScript.js')
+block script
+    script(src='../javascripts/regScript.js')
