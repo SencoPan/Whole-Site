@@ -1,9 +1,10 @@
 const router = require('express').Router(),
     keys = require('../config/keys'),
     request = require('request'),
+    authState = require('./login').authState,
     User = require('../config/db').User;
 
-router.get('/reg', (req, res) => {
+router.get('/reg', authState.isNotAuthorised,(req, res) => {
     res.render("registration");
 });
 

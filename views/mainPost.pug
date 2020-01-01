@@ -2,7 +2,7 @@ extends mainLayout
 block title
     title News
 block loginPanel
-    if( !user )
+    if( !session )
         .logsButtons
             a(href="/auth/login")
                 button.btnNav Log in

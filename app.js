@@ -8,6 +8,7 @@ const   createError = require('http-errors'),
         authRouters = require('./routes/login.js'),
         registration = require('./routes/registration.js'),
         profileRouters = require('./routes/profile'),
+        generalRoutes = require('./routes/mainRoutes'),
         sassMiddleware = require('node-sass-middleware'),
         passportSetup = require('./config/passport-setup'),
         passport = require('passport'),
@@ -18,12 +19,7 @@ const   createError = require('http-errors'),
 let ObjectID = require('mongodb').ObjectID,
       db = require("./config/db");
 
-const User = db.User;
-const Posts = db.PostSchema;
-
 let app = express();
-
-let urlencodedParser = bodyParser.urlencoded({ extended : false });
 
 db.connect("mongodb://localhost:27017/nodeExp",(err, state) =>{
   if(err){
@@ -52,6 +48,12 @@ app.use(cookieSession(
     }
 ));
 
+// initialisation of the global variable
+app.use((req, res, next) => {
+    res.locals.session = req.user || req.session.user;
+    next();
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -69,17 +71,6 @@ app.use('/auth', authRouters, registration);
 app.use('/profile', profileRouters);
 app.use('/CreatePost', creationOfPost);
 app.use('/', generalRoutes);
-
-app.get("/", (req, res) => {
-    Posts.find((err, data) => {
-        if (err) return console.error(err);
-        res.render("mainPost", {user: req.user || req.session.user, posts: data});
-    })
-});
-
-app.get("/check", (req, res) => {
-    res.render("mainLayout")
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

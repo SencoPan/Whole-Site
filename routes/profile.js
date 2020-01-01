@@ -1,17 +1,23 @@
 const router = require('express').Router();
+const authState = require('./login').authState;
 
-const authCheck = (req, res, next) => {
-    if(!req.user){
-        //if user is not logged.
-        res.redirect("/auth/login");
+router.get('/', authState.isAuthorised, (req, res) => {
+    let userLogin;
 
-    } else{
-        next()
-    }
-}
+    req.user ?
+        user = {
+            login : req.user.username,
+            image: req.user.imageURL
+        } :
+        user = {
+            login: req.session.user.login,
+            image: null
+     };
 
-router.get('/', authCheck, (req, res) => {
-    res.render('profile', { checkForUser : req.user.username, imageURL: req.user.imageURL});
+    res.render('profile', {
+        checkForUser : user.login,
+        imageURL:  user.image
+    });
 });
 
 module.exports = router;
